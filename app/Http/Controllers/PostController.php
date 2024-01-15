@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
 
+    // -- display post
     function index() {
         $posts = Post::all();
 
@@ -19,11 +20,13 @@ class PostController extends Controller
         ]);
     }
 
+    // -- show create form
     function create()
     {
         return view('create-post');
     }
 
+    // save post
     function store(Request $request)
     {
         // validasi data
@@ -59,5 +62,9 @@ class PostController extends Controller
         }
 
         return redirect('/');
+    }
+
+    function show() {
+        
     }
 }
