@@ -9,7 +9,7 @@ class Comment extends Model
 {
     use HasFactory;
 
-    function users()
+    function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }

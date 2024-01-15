@@ -13,7 +13,11 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
+    {   
+        Storage::deleteDirectory('public/images/postImage');
+        Storage::deleteDirectory('public/images/tmp');
+
+
         $user = \App\Models\User::factory()->create([
             'username' => 'Galeria'
         ]);
@@ -32,6 +36,14 @@ class DatabaseSeeder extends Seeder
                 'description' => 'lorem ipsum',
                 'user_id' => $user->id,
             ]);
+
+            foreach(range(1, 2) as $commentindex) {
+                \App\Models\Comment::factory()->create([
+                    'comment' => 'lorem ipsum comment',
+                    'user_id' => $user->id,
+                    'post_id' => $post->id
+                ]);
+            }
             
             $chosenImage = $imageNames[array_rand($imageNames)];
             $newPath = uniqid('folder-', true). '/'. uniqid('image-', true)  . pathinfo($chosenImage)['extension'];
@@ -65,6 +77,6 @@ class DatabaseSeeder extends Seeder
 
         Role::create(['name' => 'admin']);
 
-        $admin->assignRole('admin');
+        $admin->assignRole('admin');        
     }
 }

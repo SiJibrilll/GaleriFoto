@@ -2,11 +2,17 @@
     <h1>Comments </h1>
     {{-- The best athlete wants his opponent at his best. --}}
     <ul class="space-y-4">
-        @for ($i = 0; $i < 20; $i++)
+        @foreach ($comments as $comment)
+        <li wire:key='{{$comment->id}}' class="border-b border-gray-200">
+            <p class="font-bold"> {{$comment->user->username}} </p>
+            <p class="text-sm">{{$comment->comment}} </p>
+        </li>
+        @endforeach
+        {{-- @for ($i = 0; $i < 20; $i++)
         <li class="border-b border-gray-200">
             <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </li>
-        @endfor
+        @endfor --}}
     </ul>
 
     {{-- <div class="fixed bottom-0 inset-x-0">
