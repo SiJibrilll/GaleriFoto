@@ -60,4 +60,10 @@ class PostController extends Controller
 
         return redirect('/');
     }
+
+    function show(Post $post) {
+        return view('show-post', [
+            'post' => $post
+        ]);
+    }
 }

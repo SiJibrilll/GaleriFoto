@@ -28,9 +28,14 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
 });
 
+// -- logout
 Route::post('/logout', [AuthController::class, 'logout']);
 
+// -- home page
 Route::get('/', [PostController::class, 'index']);
+
+ // -- show post
+ Route::get('/posts/{post}', [PostController::class, 'show']);
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -45,4 +50,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     // -- store form
     Route::post('/posts/store', [PostController::class, 'store']);
+
+   
 });

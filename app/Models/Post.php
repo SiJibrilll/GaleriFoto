@@ -20,7 +20,7 @@ class Post extends Model
         return $this->hasMany(Post_image::class, "post_id");
     }
 
-    function users() {
+    function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
 }
