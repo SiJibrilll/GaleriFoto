@@ -29,7 +29,7 @@ class CreateComments extends Component
 
     public function render()
     {
-        $this->comments = $this->post->comments;
+        $this->comments = $this->post->comments->sortByDesc('created_at');
 
         return view('livewire.create-comments');
     }

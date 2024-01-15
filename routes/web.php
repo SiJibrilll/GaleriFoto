@@ -35,7 +35,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/', [PostController::class, 'index']);
 
  // -- show post
- Route::get('/posts/{post}', [PostController::class, 'show']);
+ Route::get('/posts/show/{post}', [PostController::class, 'show']);
 
 
 Route::group(['middleware' => ['auth']], function () {
