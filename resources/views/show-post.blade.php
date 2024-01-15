@@ -22,11 +22,13 @@
 
     {{-- comment modal --}}
     <div class="comment-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
-      <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
+      <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
         <button onclick="hideModal('comment')">CLOSE COMMENT</button>
+        <div class="h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
             <livewire:create-comments :id='$post->id' />    
             <div class="h-[15vh] max-h-[15vh]">
             </div>
+        </div>
       </div>
     </div>
     
