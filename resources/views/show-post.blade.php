@@ -16,11 +16,17 @@
 
     <div class="modal-bg hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out" aria-hidden="true"></div>
 
-    {{-- <div class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
-        <div class="bg-white rounded-s-xl rounded-e-xl shadow-md overflow-y-scroll w-full max-h-[75vh]">            
-              
+    {{-- comment modal --}}
+    <div class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
+      <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
+        <button onclick="hideModal('album')">CLOSE ALBUM</button>
+        <div class="panel h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
+            <livewire:create-album :post='$post' />    
+            <div class="h-[15vh] max-h-[15vh]">
+            </div>
         </div>
-    </div> --}}
+      </div>
+    </div>
 
     {{-- comment modal --}}
     <div class="comment-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
@@ -35,15 +41,18 @@
     </div>
     
 
-      <button onclick="showModal('comment')">OPEN</button>
+      <button onclick="showModal('comment')">OPEN COMMENT</button>
+      <button onclick="showModal('album')">SAVE TO ALBUM</button>
 
       <script>
         const backdrop = document.querySelector('.modal-bg');
         const body = document.body;
-        const modal = document.querySelector('.comment-popup');
+        const commentModal = document.querySelector('.comment-popup');
+        const albumModal = document.querySelector('.album-popup');
 
         // -- comment modal
-        function showModal() {
+        function showModal(type) {
+          let modal = document.querySelector('.' + type + '-popup');
             backdrop.classList.remove('hidden');
             modal.classList.remove('hidden');
             setTimeout(() => {
@@ -55,21 +64,46 @@
         }, 100);
         }
 
-        function hideModal() {
-        body.classList.remove('overflow-hidden'); // Re-enable scrolling on the body
-        backdrop.classList.add('opacity-0');
-        backdrop.classList.add('hidden');
-        modal.classList.add('opacity-0');
-        modal.classList.add('translate-y-full');
+        function hideModal(type, eraseBG = true) {
+          let modal = document.querySelector('.' + type + '-popup');
+          body.classList.remove('overflow-hidden'); // Re-enable scrolling on the body
+          modal.classList.add('opacity-0');
+          modal.classList.add('translate-y-full');
+          if (eraseBG) {
+            backdrop.classList.add('opacity-0');
+            backdrop.classList.add('hidden');
+          }          
         }
 
+        function resetModal() { //TODO for some reason this wont work
+          console.log('hello');
+            for (let type of ['comment', 'album', 'create-album']) {
+              let modal = document.querySelector('.' + type + '-popup');
+              body.classList.remove('overflow-hidden'); // Re-enable scrolling on the body
+              backdrop.classList.add('opacity-0');
+              backdrop.classList.add('hidden');
+              modal.classList.add('opacity-0');
+              modal.classList.add('translate-y-full');
 
-        modal.addEventListener('click', (event) => {
+            }
+        }
+
+        commentModal.addEventListener('click', (event) => {
+        // Prevent clicks inside the modal from closing it
+        event.stopPropagation();
+        });
+        
+        albumModal.addEventListener('click', (event) => {
         // Prevent clicks inside the modal from closing it
         event.stopPropagation();
         });
 
-        backdrop.addEventListener('click', hideModal);
+        document.querySelector('.create-album-popup').addEventListener('click', (event) => {
+        // Prevent clicks inside the modal from closing it
+        event.stopPropagation();
+        });
+
+        backdrop.addEventListener('click', resetModal(['comment', 'album', 'create-album']));
     </script>
 
 </x-layout>

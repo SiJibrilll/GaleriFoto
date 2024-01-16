@@ -10,6 +10,11 @@ class Album extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'user_id'
+    ];
+
     function users() {
         return $this->belongsTo(User::class, 'user_id');
     }
