@@ -48,8 +48,14 @@ Route::group(['middleware' => ['auth']], function () {
     // -- hapus tmp image
     Route::delete('/tmp-image/delete', [TmpImageController::class, 'delete']);
 
-    // -- store form
+    // -- store post
     Route::post('/posts/store', [PostController::class, 'store']);
 
-   
+    // -- edit post page
+    Route::get('/posts/edit/{post}', [PostController::class, 'edit']);
+
+    // -- update post
+    Route::post('/posts/update/{post}', [PostController::class, 'update']);
+
+
 });

@@ -12,13 +12,15 @@
     <h1> {{$post->title}} </h1>
     <h1> {{$post->description}} </h1>
 
+    <a href="/posts/edit/{{$post->id}}">edit post</a>
+
     <div class="modal-bg hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out" aria-hidden="true"></div>
 
-    <div class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
+    {{-- <div class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
         <div class="bg-white rounded-s-xl rounded-e-xl shadow-md overflow-y-scroll w-full max-h-[75vh]">            
-              {{-- @livewire('create-comments') --}}
+              
         </div>
-    </div>
+    </div> --}}
 
     {{-- comment modal --}}
     <div class="comment-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">

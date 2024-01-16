@@ -6,11 +6,13 @@ use App\Models\Post;
 use App\Models\Tmp_image;
 use App\Models\Post_image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
 
+    // -- show all post
     function index() {
         $posts = Post::all();
 
@@ -19,11 +21,13 @@ class PostController extends Controller
         ]);
     }
 
+    // -- show create form
     function create()
     {
         return view('create-post');
     }
 
+    // -- store post
     function store(Request $request)
     {
         // validasi data
@@ -32,7 +36,7 @@ class PostController extends Controller
             'image' => 'required',
         ]);
 
-     
+    
         $post = Post::create([
             'user_id' => Auth()->user()->id,
             'title' => $request->title,
@@ -61,8 +65,23 @@ class PostController extends Controller
         return redirect('/');
     }
 
+    // -- show one post
     function show(Post $post) {
         return view('show-post', [
+            'post' => $post
+        ]);
+    }
+
+    // -- show edit form
+    function edit(Post $post) {
+        // if user doesnt own this post, return with error
+        // TODO add error msg
+        if (Auth()->user()->id == $post->user->id) {
+            return redirect('/posts/show/' . $post);
+        }
+
+
+        return view('edit-post', [
             'post' => $post
         ]);
     }
