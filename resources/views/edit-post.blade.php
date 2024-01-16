@@ -1,5 +1,5 @@
 <x-layout>
-    <form action="/posts/update" method="POST" enctype="multipart/form-data">
+    <form action="/posts/update/{{$post->id}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <input class="filepond" type="file" name='image[]' multiple credits='false'>

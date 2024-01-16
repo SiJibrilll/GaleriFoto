@@ -85,4 +85,41 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
+
+    function update(Post $post, Request $request) {
+        // validasi data
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+        ]);
+
+        // update post
+        $post->update($request->all());
+
+        // hapus semua gambar lama
+        foreach ($post->images as $image) {
+            Storage::deleteDirectory('images/postImage/'. dirname($image->image));
+            $image->delete();
+        }
+
+        // simpan tiap gambar yang disertakan
+        foreach (($request->image ?? array()) as $image) {
+            if (null == $image || !is_numeric($image)) {
+                $post->delete();
+                return redirect('/posts/create')->withInput()->withErrors(['image' => 'Image required']);
+            }
+
+            $tmp = Tmp_image::find($image);
+            Storage::copy('public/images/tmp/' . $tmp->folder . '/' . $tmp->image, 'public/images/postImage/' . $tmp->folder . '/' . $tmp->image);
+            Post_image::create([
+                'image' => $tmp->folder . '/' . $tmp->image,
+                'post_id' => $post->id
+            ]);
+            // -- hapus tmp image
+            Storage::deleteDirectory('public/images/tmp/' . $tmp->folder);
+            $tmp->delete();
+        }
+
+        return redirect('/posts/show/'. $post->id);
+    }
 }
