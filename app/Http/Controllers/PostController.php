@@ -76,8 +76,8 @@ class PostController extends Controller
     function edit(Post $post) {
         // if user doesnt own this post, return with error
         // TODO add error msg
-        if (Auth()->user()->id == $post->user->id) {
-            return redirect('/posts/show/' . $post);
+        if (Auth()->user()->id != $post->user->id) {
+            return redirect('/posts/show/' . $post->id);
         }
 
 
