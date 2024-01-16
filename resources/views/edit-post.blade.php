@@ -13,6 +13,11 @@
         <button type="submit" class="">Submit</button>
     </form>
 
+    <form action="/posts/delete/{{$post->id}}" method="POST">
+        @csrf
+        <button type="submit">Delete post</button>
+    </form>
+
     <script>
         // Register the plugin
         FilePond.registerPlugin(FilePondPluginImagePreview);

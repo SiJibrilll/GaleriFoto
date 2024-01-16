@@ -56,6 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // -- update post
     Route::post('/posts/update/{post}', [PostController::class, 'update']);
-
-
+    
+    // -- delete post
+    Route::post('/posts/delete/{post}', [PostController::class, 'delete']);
 });

@@ -122,4 +122,21 @@ class PostController extends Controller
 
         return redirect('/posts/show/'. $post->id);
     }
+
+    function delete(Post $post) {
+        if (!Auth()->user()->hasRole('admin') && $post->user->id != Auth()->user()->id) {
+            return;
+        }
+
+        // hapus semua gambar lama
+        foreach ($post->images as $image) {
+            Storage::deleteDirectory('images/postImage/'. dirname($image->image));
+            $image->delete();
+        }
+
+        $post->delete();
+        
+        return redirect('/');
+    
+    }
 }
