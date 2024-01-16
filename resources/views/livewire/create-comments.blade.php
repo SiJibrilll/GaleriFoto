@@ -7,6 +7,7 @@
             <li wire:key='{{$comment->id}}' class="border-b border-gray-200">
                 <p class="font-bold"> {{$comment->user->username}} </p>
                 <p class="text-sm">{{$comment->comment}} </p>
+                <button wire:click='delete({{$comment->id}})'>Delete</button>
             </li>
             @endforeach
             

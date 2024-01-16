@@ -13,7 +13,20 @@ class CreateComments extends Component
     public Post $post;
     public $comments;
 
+    function delete($id) {
+        $comment = Comment::find($id);
+        if (!Auth()->user()->hasRole('admin') && $comment->user->id != Auth()->user()->id) {
+            return;
+        }
+
+        $comment->delete();
+    }
+
     function store() {
+        if ($this->inputComment == '') {
+            return;
+        }
+
         Comment::create([
             'comment' => $this->inputComment,
             'post_id' => $this->post->id,
