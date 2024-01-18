@@ -16,17 +16,23 @@
 
     <div class="modal-bg hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out" aria-hidden="true"></div>
 
-    {{-- comment modal --}}
-    <div class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
-      <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
-        <button onclick="hideModal('album')">CLOSE ALBUM</button>
-        <div class="panel h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
+    
+    @auth {{-- Abum modal and button --}}
+    
+    <button onclick="showModal('album')">SAVE TO ALBUM</button>
+
+      
+      <div class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
+        <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
+          <button onclick="hideModal('album')">CLOSE ALBUM</button>
+          <div class="panel h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
             <livewire:create-album :post='$post' />    
             <div class="h-[15vh] max-h-[15vh]">
             </div>
+          </div>
         </div>
       </div>
-    </div>
+    @endauth
 
     {{-- comment modal --}}
     <div class="comment-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
@@ -42,7 +48,7 @@
     
 
       <button onclick="showModal('comment')">OPEN COMMENT</button>
-      <button onclick="showModal('album')">SAVE TO ALBUM</button>
+      
 
       <script>
         const backdrop = document.querySelector('.modal-bg');

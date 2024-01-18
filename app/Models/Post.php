@@ -27,4 +27,9 @@ class Post extends Model
     function comments() {
         return $this->hasMany(Comment::class, 'post_id');
     }
+
+    public function albums()
+    {
+        return $this->belongsToMany(Album::class, 'album_has');
+    }
 }

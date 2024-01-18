@@ -1,13 +1,15 @@
 <div class="p-4">
     <h1>Save to Album </h1>
     <button onclick="showModal('create-album')">SAVE TO NEW ALBUM</button>
+    <button wire:click='unsave'>unsave</button>
 
 
     {{-- List all album --}}
     <ul class="space-y-4">
         @foreach ($albums as $album)
         <li wire:key='{{$album->id}}' class="border-b border-gray-200">
-            <p class="font-bold"> {{$album->title}} </p>
+            <button wire:click='saveToAlbum({{$album->id}})' class="font-bold"> {{$album->title}} </button>
+            
         </li>
         @endforeach
 
