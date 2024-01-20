@@ -9,13 +9,8 @@ class Like extends Model
 {
     use HasFactory;
 
-    function users()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    function posts()
-    {
-        return $this->belongsTo(Post::class, 'post_id');
-    }
+    protected $fillable = [
+        'user_id',
+        'post_id'
+    ];
 }

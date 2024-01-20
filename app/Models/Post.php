@@ -16,6 +16,10 @@ class Post extends Model
         'user_id',
     ];
 
+    function likes() {
+        return $this->belongsToMany(User::class, 'likes');
+    }
+
     function images() {
         return $this->hasMany(Post_image::class, "post_id");
     }

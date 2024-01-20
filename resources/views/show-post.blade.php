@@ -1,21 +1,31 @@
 <x-layout>
 
+    {{-- Show the image --}}
     <img class="max-h-72 w-48 object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}" alt="Image">
 
+    {{-- if theres more than one image, display show more button --}}
     @if (count($post->images) > 1) 
         <p>Show More</p>
     @endif
 
+    {{-- general info about the post --}}
     <h1> {{$post->user->username}} </h1>
-    
-
     <h1> {{$post->title}} </h1>
     <h1> {{$post->description}} </h1>
+    {{-- <h1> {{}} </h1> --}}
 
+    {{-- edit the post --}}
     <a href="/posts/edit/{{$post->id}}">edit post</a>
 
+    
+
+    {{-- gray bg for modals --}}
     <div class="modal-bg hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out" aria-hidden="true"></div>
 
+    {{-- like button --}}
+    @auth
+      <livewire:create-like :post='$post' />
+    @endauth
     
     @auth {{-- Abum modal and button --}}
     
@@ -35,6 +45,7 @@
     @endauth
 
     {{-- comment modal --}}
+    <button onclick="showModal('comment')">OPEN COMMENT</button>
     <div class="comment-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
       <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
         <button onclick="hideModal('comment')">CLOSE COMMENT</button>
@@ -47,9 +58,9 @@
     </div>
     
 
-      <button onclick="showModal('comment')">OPEN COMMENT</button>
       
-
+      
+    {{-- scripts --}}
       <script>
         const backdrop = document.querySelector('.modal-bg');
         const body = document.body;
@@ -70,6 +81,7 @@
         }, 100);
         }
 
+        // hide the modal
         function hideModal(type, eraseBG = true) {
           let modal = document.querySelector('.' + type + '-popup');
           body.classList.remove('overflow-hidden'); // Re-enable scrolling on the body
@@ -94,6 +106,7 @@
             }
         }
 
+        // ============ settings to preload ================
         commentModal.addEventListener('click', (event) => {
         // Prevent clicks inside the modal from closing it
         event.stopPropagation();
