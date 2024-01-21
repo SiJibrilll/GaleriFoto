@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Tmp_image;
 use App\Models\Post_image;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -41,7 +42,6 @@ class PostController extends Controller
             'user_id' => Auth()->user()->id,
             'title' => $request->title,
             'description' => $request->description,
-            'tags' => $request->tags,
         ]);
 
         // simpan tiap gambar yang disertakan
@@ -62,7 +62,19 @@ class PostController extends Controller
             $tmp->delete();
         }
 
-        return redirect('/');
+        
+        // -- create and attach tags
+        if (isset($request->tags)) {
+            // seperate the tags into diffrent strings based on white space
+            $tags = explode(' ', $request->tags);
+
+            // store or find each tags and attach it to post
+            foreach ($tags as $tag) {
+                $post->tags()->attach(Tag::firstOrCreate(['name' => $tag]));
+            }
+        }
+
+        return redirect('/posts/show/' . $post->id);
     }
 
     // -- show one post

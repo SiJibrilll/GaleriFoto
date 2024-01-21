@@ -5,11 +5,11 @@
         <input class="filepond" type="file" name='image[]' multiple credits='false'>
 
         <h1>Title</h1>
-        <input type="text" name="title">
+        <textarea name="title"></textarea>
         <h1>Description</h1>
-        <input type="text" name="description">
+        <textarea name="description"></textarea>
         <h1>Tags</h1>
-        <input type="text" name="tags">
+        <textarea name="tags"></textarea>
         <button type="submit" class="">Submit</button>
     </form>
 
