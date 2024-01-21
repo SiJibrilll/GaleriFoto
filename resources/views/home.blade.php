@@ -9,5 +9,5 @@
     <a href="/login">Login</a>    
 @endauth
 
-<livewire:display-posts filter='' />
+<livewire:display-posts />
 </x-layout>
