@@ -9,5 +9,5 @@
     <a href="/login">Login</a>    
 @endauth
 
-<livewire:display-posts />
+<livewire:display-posts tag='anime'/>
 </x-layout>

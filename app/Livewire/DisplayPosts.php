@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class DisplayPosts extends Component
 {
     public $filter;
+    public $tag;
 
     public $amount = 10;
     public $loads = 0;
@@ -22,13 +24,19 @@ class DisplayPosts extends Component
 
     public function render()
     {
-       if ($this->filter == null) { // if there were no filters applied, then show newest posts
+       if ($this->filter == null && $this->tag == null) { // if there were no filters or tags applied, then show newest posts
             $newPosts =  Post::orderBy('created_at', 'desc')->offset($this->amount * $this->loads)->limit($this->amount)->get();
            
-        } else { // if there were filters, then query accordingly
+        } 
+        
+        if (isset($this->filter)){ // if there were filters, then query accordingly
            $newPosts = Post::where('title', 'like', '%'. $this->filter . '%')->orWhere('description', 'like', '%'. $this->filter . '%')
            ->orWhere('tags', 'like', '%'. $this->filter . '%')->offset($this->amount * $this->loads)->limit($this->amount)->get();
        }
+
+       if (isset($this->tag)){ // if there were tags, then query accordingly
+            $newPosts = Tag::where('name', $this->tag)->first()->posts;
+        }
 
        // -- quarry all of the post's image
        foreach ($newPosts as $post) {
