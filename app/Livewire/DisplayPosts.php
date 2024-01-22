@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Album;
 use App\Models\Post;
 use App\Models\Tag;
 use Livewire\Component;
@@ -12,6 +13,7 @@ class DisplayPosts extends Component
 {
     public $filter;
     public $tag;
+    public $album;
 
     public $amount = 10;
     public $loads = 0;
@@ -37,6 +39,11 @@ class DisplayPosts extends Component
        if (isset($this->tag)){ // if there were tags, then query accordingly
             $newPosts = Tag::where('name', $this->tag)->first()->posts;
         }
+
+        if (isset($this->album)){ // if there were an album id, then query accordingly
+            $newPosts = Album::find($this->album)->posts;
+        }
+
 
        // -- quarry all of the post's image
        foreach ($newPosts as $post) {
