@@ -1,7 +1,7 @@
 <div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
 
-    <h1>Livewire</h1>
+    <h1>posts</h1>
 
     @for ($i = 0; $i < count($posts); $i++) 
 

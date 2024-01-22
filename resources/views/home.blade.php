@@ -9,5 +9,7 @@
     <a href="/login">Login</a>    
 @endauth
 
-<livewire:display-posts album='2'/>
+<p> {{isset($album)?: ''}} </p>
+
+<livewire:display-posts />
 </x-layout>

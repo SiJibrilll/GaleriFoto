@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\TmpImageController;
+use App\Models\Album;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,4 +61,10 @@ Route::group(['middleware' => ['auth']], function () {
     
     // -- delete post
     Route::post('/posts/delete/{post}', [PostController::class, 'delete']);
+
+    // -- display album
+    Route::get('/albums', [AlbumController::class, 'index']);
+
+    // -- display album contents
+    Route::get('/albums/show/{album}', [AlbumController::class, 'show']);
 });
