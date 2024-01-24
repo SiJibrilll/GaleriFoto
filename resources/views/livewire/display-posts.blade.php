@@ -3,13 +3,20 @@
 
     <h1>posts</h1>
 
+    
+
+
+
     @for ($i = 0; $i < count($posts); $i++) 
 
         @if ($i + 7 == count($posts))
             <div x-intersect='$wire.loadMore'></div>
         @endif
-        <a href="/posts/show/{{$posts[$i][0]}}">
-            <img class="max-h-72 w-48 object-cover" src="{{asset("storage/images/postImage/" . $posts[$i][1])}}" alt="Image">
-        </a>
+        {{-- //TODO implement lazy loading --}}
+        
+        <livewire:image-loader wire:key='{{$i}}' imgKey='{{$i}}' url='{{asset("storage/images/postImage/" . $posts[$i][1])}}' />        
+
+        {{-- <a wire:key='{{$i}}' href="/posts/show/{{$posts[$i][0]}}">
+        </a> --}}
     @endfor
 </div>

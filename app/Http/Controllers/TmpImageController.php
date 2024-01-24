@@ -14,7 +14,6 @@ class TmpImageController extends Controller
         if (!$request->hasFile('image')) {
             return 'ERROR';
         }
-        //TODO find a way to modify image name before saving because it fucks up with the routing
         $image = $request->file('image')[0];
         $filename = uniqid('image-', true);
         $folder = uniqid('folder-', true);

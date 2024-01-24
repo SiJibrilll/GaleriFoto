@@ -23,6 +23,7 @@ class DisplayPosts extends Component
     {
        $this->loads++;
     }
+    
 
     public function render()
     {

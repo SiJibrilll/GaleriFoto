@@ -1,68 +1,72 @@
 <x-layout>
 
-    {{-- Show the image --}}
-    <img class="max-h-72 w-48 object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}" alt="Image">
+  {{-- Show the image --}}
+  <img class="max-h-72 w-48 object-cover" src="{{asset(" storage/images/postImage/" . $post->images[0]->image)}}"
+  alt="Image">
 
-    {{-- if theres more than one image, display show more button --}}
-    @if (count($post->images) > 1) 
-        <p>Show More</p>
-    @endif
+  {{-- if theres more than one image, display show more button --}}
+  @if (count($post->images) > 1)
+  <p>Show More</p>
+  @endif
 
-    {{-- general info about the post --}}
-    <h1> {{$post->user->username}} </h1>
-    <h1> {{$post->title}} </h1>
-    <h1> {{$post->description}} </h1>
-    {{-- <h1> {{}} </h1> --}}
+  {{-- general info about the post --}}
+  <h1> {{$post->user->username}} </h1>
+  <h1> {{$post->title}} </h1>
+  <h1> {{$post->description}} </h1>
+  {{-- <h1> {{}} </h1> --}}
 
-    {{-- edit the post --}}
-    <a href="/posts/edit/{{$post->id}}">edit post</a>
+  {{-- edit the post --}}
+  <a href="/posts/edit/{{$post->id}}">edit post</a>
 
-    
 
-    {{-- gray bg for modals --}}
-    <div class="modal-bg hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out" aria-hidden="true"></div>
 
-    {{-- like button --}}
-    @auth
-      <livewire:create-like :post='$post' />
-    @endauth
-    
-    @auth {{-- Abum modal and button --}}
-    
-    <button onclick="showModal('album')">SAVE TO ALBUM</button>
+  {{-- gray bg for modals --}}
+  <div class="modal-bg hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out"
+    aria-hidden="true"></div>
 
-      
-      <div class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
-        <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
-          <button onclick="hideModal('album')">CLOSE ALBUM</button>
-          <div class="panel h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
-            <livewire:create-album :post='$post' />    
-            <div class="h-[15vh] max-h-[15vh]">
-            </div>
-          </div>
-        </div>
-      </div>
-    @endauth
+  {{-- like button --}}
+  @auth
+  <livewire:create-like :post='$post' />
+  @endauth
 
-    {{-- comment modal --}}
-    <button onclick="showModal('comment')">OPEN COMMENT</button>
-    <div class="comment-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
-      <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
-        <button onclick="hideModal('comment')">CLOSE COMMENT</button>
-        <div class="h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
-            <livewire:create-comments :id='$post->id' />    
-            <div class="h-[15vh] max-h-[15vh]">
-            </div>
+  @auth {{-- Abum modal and button --}}
+
+  <button onclick="showModal('album')">SAVE TO ALBUM</button>
+
+
+  <div
+    class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
+    <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
+      <button onclick="hideModal('album')">CLOSE ALBUM</button>
+      <div class="panel h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
+        <livewire:create-album :post='$post' />
+        <div class="h-[15vh] max-h-[15vh]">
         </div>
       </div>
     </div>
-    
+  </div>
+  @endauth
 
-      
-      
-    {{-- scripts --}}
-      <script>
-        const backdrop = document.querySelector('.modal-bg');
+  {{-- comment modal --}}
+  <button onclick="showModal('comment')">OPEN COMMENT</button>
+  <div
+    class="comment-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
+    <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
+      <button onclick="hideModal('comment')">CLOSE COMMENT</button>
+      <div class="h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
+        <livewire:create-comments :id='$post->id' />
+        <div class="h-[15vh] max-h-[15vh]">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  {{-- scripts --}}
+  <script>
+    const backdrop = document.querySelector('.modal-bg');
         const body = document.body;
         const commentModal = document.querySelector('.comment-popup');
         const albumModal = document.querySelector('.album-popup');
@@ -123,6 +127,6 @@
         });
 
         backdrop.addEventListener('click', resetModal(['comment', 'album', 'create-album']));
-    </script>
+  </script>
 
 </x-layout>
