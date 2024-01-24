@@ -10,10 +10,6 @@ class ImageLoader extends Component
     public $url;
     public $imgKey;
 
-    function showImage() {
-        $this->isLoaded = true;
-    }
-
     public function render()
     {
         return view('livewire.image-loader');

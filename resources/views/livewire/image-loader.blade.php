@@ -1,4 +1,4 @@
-<div class="main-{{$imgKey}}">
+<a class="main-{{$imgKey}} " href="/posts/show/{{$imgKey}}">
     {{-- Stop trying to control. --}}
     <img class="hidden relative max-h-72 w-48 object-cover" src="{{$url}}" alt="Image" onload="loaded({{$imgKey}})">
         
@@ -20,4 +20,4 @@
         }
     </script>
  
-</div>
+</a>

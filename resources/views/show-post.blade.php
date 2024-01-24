@@ -1,7 +1,7 @@
 <x-layout>
 
   {{-- Show the image --}}
-  <img class="max-h-72 w-48 object-cover" src="{{asset(" storage/images/postImage/" . $post->images[0]->image)}}"
+  <img class="max-h-72 w-48 object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
   alt="Image">
 
   {{-- if theres more than one image, display show more button --}}
