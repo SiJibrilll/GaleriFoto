@@ -36,6 +36,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 // -- home page
 Route::get('/', [PostController::class, 'index']);
 
+
  // -- show post
  Route::get('/posts/show/{post}', [PostController::class, 'show']);
 
