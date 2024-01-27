@@ -125,8 +125,8 @@
         // Prevent clicks inside the modal from closing it
         event.stopPropagation();
         });
-
-        backdrop.addEventListener('click', resetModal(['comment', 'album', 'create-album']));
+        // TODO this wont work somehow
+        backdrop.addEventListener('click', resetModal());
   </script>
 
 </x-layout>
