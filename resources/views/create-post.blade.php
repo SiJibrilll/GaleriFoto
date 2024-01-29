@@ -1,16 +1,32 @@
 <x-layout>
-    <form action="/posts/store" method="POST" enctype="multipart/form-data">
+    <div class="flex justify-center">
+        <h1 class="text-black text-xs underline font-normal font-['Poppins']"> Post </h1>
+    </div>
+    
+
+    <form class="mt-12 mx-2"  action="/posts/store" method="POST" enctype="multipart/form-data">
         @csrf
 
         <input class="filepond" type="file" name='image[]' multiple credits='false'>
 
-        <h1>Title</h1>
-        <textarea name="title"></textarea>
-        <h1>Description</h1>
-        <textarea name="description"></textarea>
-        <h1>Tags</h1>
-        <textarea name="tags"></textarea>
-        <button type="submit" class="">Submit</button>
+        <h1 class="text-black font-normal font-['Poppins'] mt-9">Title</h1>
+        <div class="flex">
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="title"></textarea>
+        </div>
+
+        <h1 class="text-black font-normal font-['Poppins'] mt-4">Description</h1>
+        <div class="flex">
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="description"></textarea>
+        </div>
+
+        <h1 class="text-black font-normal font-['Poppins'] mt-4">Tags</h1>
+        <div class="flex">
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="tags"></textarea>
+        </div>
+
+        <div class="flex justify-end mt-4">
+            <button type="submit" class="w-24 h-9 bg-gray-800 text-white text-xs rounded-3xl font-normal font-['Poppins']">Submit</button>
+        </div>
     </form>
 
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>

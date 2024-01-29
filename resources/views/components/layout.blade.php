@@ -32,6 +32,10 @@
           
     </div>
 
+    {{-- this div is used to give a gap so the content isnt covered by the navbar --}}
+    <div class="mb-12"></div>
+
+
     {{
         $slot
     }}
