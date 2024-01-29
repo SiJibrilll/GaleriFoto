@@ -1,39 +1,75 @@
 <x-layout>
-
   {{-- Show the image --}}
-  <img class="max-h-72 w-48 object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
-  alt="Image">
+  @if (count($post->images) > 1) {{-- if theres more than one image, display show more button --}}
+      <div class="relative">
+        <img class="w-full max-h-72 object-top object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
+        alt="Image">
+        <button class="absolute bottom-1 left-0 right-0 mx-32 text-xs font-normal font-['Poppins'] bg-black px-4 py-2 text-white text-center rounded-2xl ">Show More</button>
+      </div>
+  @else
+      <img class="max-w-auto h-auto object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
+      alt="Image">
 
-  {{-- if theres more than one image, display show more button --}}
-  @if (count($post->images) > 1)
-  <p>Show More</p>
   @endif
 
+  <div class="flex flex-row justify-between mx-3 mt-8 mb-5">
+    {{-- show poster username and picture --}}
+      @isset($post->user->image)
+          <div class="flex flex-row items-center">
+            <img onclick="window.location.href='/albums'" src="{{$post->user->image}}" alt="User Icon" class="h-8 w-8 rounded-full mr-4">
+            <h1 class="text-black text-xs font-semibold font-['Poppins']"> {{$post->user->username}} </h1>
+          </div>
+      @else   {{-- if poster does not have an image, just use a placeholder--}}
+          <div class="flex flex-row items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+            <h1 class="text-black text-xs font-semibold font-['Poppins']"> {{$post->user->username}} </h1>
+          </div>
+      @endisset
+
+      <div class="ml-auto flex flex-row justify-end items-center">
+        @if (Auth()->user()->id == $post->user->id) {{-- if logged in user is the post owner, then show edit button --}}
+          <svg onclick="window.location.href='/posts/edit/{{$post->id}}'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+          </svg>
+        @endif
+
+        {{-- like button --}}
+        @auth
+        <livewire:create-like :post='$post' />
+        @endauth
+         
+        <button class="rounded-3xl p-2 h-10 w-24 bg-gray-200 text-black text-xs font-normal font-['Poppins']" onclick="showModal('album')">Save</button>
+
+      </div>
+
+  </div>
+
+
+
   {{-- general info about the post --}}
-  <h1> {{$post->user->username}} </h1>
-  <h1> {{$post->title}} </h1>
-  <h1> {{$post->description}} </h1>
-  {{-- <h1> {{}} </h1> --}}
+  <div class="ml-16 mb-3">
+      <h1 class="text-black text-lg font-bold font-['Poppins']"> {{$post->title}} </h1>
+      <h1 class="text-black text-xs font-light font-['Poppins']"> {{$post->description}} </h1>
+  </div>
 
-  {{-- edit the post --}}
-  <a href="/posts/edit/{{$post->id}}">edit post</a>
+  <hr class="h-[1px] bg-gray-200 w-full mb-3">
+  
+  {{-- comment button --}}
+  <button class="ml-3 text-black text-xs font-bold font-['Poppins'] mb-3" onclick="showModal('comment')">See Comments</button>
+  
+  <hr class="h-[1px] bg-gray-200 w-full mb-4">
 
-
+  <h1 class="ml-3 text-black text-xs font-normal font-['Poppins'] mb-4">More to Explore</h1>
 
   {{-- gray bg for modals --}}
   <div class="modal-bg hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out"
     aria-hidden="true"></div>
 
-  {{-- like button --}}
-  @auth
-  <livewire:create-like :post='$post' />
-  @endauth
+  
 
-  @auth {{-- Abum modal and button --}}
-
-  <button onclick="showModal('album')">SAVE TO ALBUM</button>
-
-
+  @auth {{-- Abum modal --}}
   <div
     class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
     <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
@@ -48,9 +84,8 @@
   @endauth
 
   {{-- comment modal --}}
-  <button onclick="showModal('comment')">OPEN COMMENT</button>
   <div
-    class="comment-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
+    class="comment-popup z-50 hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
     <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
       <button onclick="hideModal('comment')">CLOSE COMMENT</button>
       <div class="h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
@@ -61,6 +96,8 @@
     </div>
   </div>
 
+  {{-- display more post --}}
+  <livewire:display-posts />
 
 
 
