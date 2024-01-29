@@ -1,15 +1,17 @@
 <x-layout>
-<h1>beranda</h1>
-@auth
+{{-- @auth
     <form action="/logout" method="POST">
         @csrf
         <button type="submit" class="btn btn-primary">Logout</button>
     </form>
 @else
     <a href="/login">Login</a>    
-@endauth
+@endauth --}}
+<div class="mb-12"></div>
 
-<p> {{isset($album)?: ''}} </p>
-
+<div class="my-5 flex justify-center">
+    <h1 class="text-black text-xs underline font-normal font-['Poppins']"> Home </h1>
+</div>
 <livewire:display-posts />
+
 </x-layout>
