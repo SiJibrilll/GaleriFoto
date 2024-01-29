@@ -30,16 +30,21 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
 });
 
+
+// ========================= General function =====================
 // -- logout
 Route::post('/logout', [AuthController::class, 'logout']);
 
 // -- home page
 Route::get('/', [PostController::class, 'index']);
 
- // -- show post
- Route::get('/posts/show/{post}', [PostController::class, 'show']);
+// -- show post
+Route::get('/posts/show/{post}', [PostController::class, 'show']);
 
+// -- show all post images
+Route::get('/posts/images/show/{post}', [PostController::class, 'image']);
 
+// ========================= logged in functions ===================
 Route::group(['middleware' => ['auth']], function () {
     // -- create form
     Route::get('/posts/create', [PostController::class, 'create']);

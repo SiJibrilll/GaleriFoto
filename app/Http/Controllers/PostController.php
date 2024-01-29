@@ -151,4 +151,10 @@ class PostController extends Controller
         return redirect('/');
     
     }
+
+    function image(Post $post) {
+        return view('show-image', [
+            'post' => $post
+        ]);
+    }
 }
