@@ -25,6 +25,7 @@ class GoogleController extends Controller
                     'username' => $googleUser->name, // else? create a new user
                     'email' => $googleUser->email,
                     'google_id' => $googleUser->id,
+                    'image' => $googleUser->getAvatar()
                 ]);
                 
                 // if ($user->wasRecentlyCreated) {
