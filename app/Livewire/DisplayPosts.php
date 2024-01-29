@@ -19,27 +19,6 @@ class DisplayPosts extends Component
     public $loads = 0;
     public $posts = [];
 
-    #[Computed]
-    public function computed()
-{
-
-    return [
-        'numColumns' => function () {
-            $screenWidth = $this->getScreenWidth(); // Implement a method to get screen width
-
-            if ($screenWidth >= 1200) {
-                return 4;
-            } elseif ($screenWidth >= 992) {
-                return 3;
-            } elseif ($screenWidth >= 768) {
-                return 2;
-            } else {
-                return 1;
-            }
-        },
-    ];
-}
-
     function loadMore()
     {
        $this->loads++;
