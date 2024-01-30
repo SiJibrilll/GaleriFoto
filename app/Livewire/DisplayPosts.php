@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Storage;
 
 class DisplayPosts extends Component
 {
+    #[Reactive]
     public $filter;
+    
     public $tag;
     public $album;
 
@@ -34,7 +36,7 @@ class DisplayPosts extends Component
         
         if (isset($this->filter)){ // if there were filters, then query accordingly
            $newPosts = Post::where('title', 'like', '%'. $this->filter . '%')->orWhere('description', 'like', '%'. $this->filter . '%')
-           ->orWhere('tags', 'like', '%'. $this->filter . '%')->offset($this->amount * $this->loads)->limit($this->amount)->get();
+           ->offset($this->amount * $this->loads)->limit($this->amount)->get();
        }
 
        if (isset($this->tag)){ // if there were tags, then query accordingly

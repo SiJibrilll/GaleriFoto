@@ -157,4 +157,8 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
+
+    function search() {
+        return view('search-page');
+    }
 }

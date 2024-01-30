@@ -44,6 +44,9 @@ Route::get('/posts/show/{post}', [PostController::class, 'show']);
 // -- show all post images
 Route::get('/posts/images/show/{post}', [PostController::class, 'image']);
 
+// -- search page
+Route::get('/posts/search', [PostController::class, 'search']);
+
 // ========================= logged in functions ===================
 Route::group(['middleware' => ['auth']], function () {
     // -- create form
