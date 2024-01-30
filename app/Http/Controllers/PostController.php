@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Tmp_image;
 use App\Models\Post_image;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -159,6 +160,7 @@ class PostController extends Controller
     }
 
     function search() {
+        View::share('title', 'search');
         return view('search-page');
     }
 }
