@@ -25,12 +25,12 @@
 
     </form>
 
-    <div class="flex justify-end mt-6 mx-2 items-center">
+    <div class="flex justify-end mt-6 mx-2 items-center mb-28">
         <form action="/posts/delete/{{$post->id}}" method="POST">
             @csrf
             <button type="submit" class="mr-4 w-24 h-9 bg-red-500 text-white text-xs rounded-3xl font-normal font-['Poppins']">Delete post</button>
         </form>
-        <button type="submit" form="myform" class="w-24 h-9 bg-gray-800 text-white text-xs rounded-3xl font-normal font-['Poppins']">Click me!</button>
+        <button type="submit" form="myform" class="w-24 h-9 bg-gray-800 text-white text-xs rounded-3xl font-normal font-['Poppins']">Submit</button>
     </div>
 
 
