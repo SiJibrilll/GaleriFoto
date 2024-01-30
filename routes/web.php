@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\TmpImageController;
+use App\Http\Controllers\UserController;
 use App\Models\Album;
 
 /*
@@ -75,4 +76,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // -- display album contents
     Route::get('/albums/show/{album}', [AlbumController::class, 'show']);
+
+    // -- profile page
+    Route::get('/users/show/{user}', [UserController::class, 'show']);
 });
