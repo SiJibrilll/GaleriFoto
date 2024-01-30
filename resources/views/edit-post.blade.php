@@ -61,7 +61,7 @@
         let url = @json(asset("storage/images/postImage/"));
 
         images.forEach(image => {
-            pond.addFile(url + '/' + image.image)
+            pond.addFiles(url + '/' + image.image)
         });
 
     </script>
