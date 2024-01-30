@@ -20,7 +20,7 @@
 
         <h1 class="text-black font-normal font-['Poppins'] mt-4">Tags</h1>
         <div class="flex">
-            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="tags">{{null == old('tags')? $post->tags : old('tags')}}</textarea>
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="tags">@if(old('tags') != null){{old('tags')}}@else @foreach ($post->tags as $tag){{$tag->name}}@endforeach @endif</textarea>
         </div>
 
     </form>
