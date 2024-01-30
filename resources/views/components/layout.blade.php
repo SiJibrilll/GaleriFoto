@@ -19,7 +19,10 @@
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 <body>
     {{-- mobile topbar --}}
-    <div class="lg:hidden fixed z-50 top-0 left-0 right-0 h-12 bg-white flex items-center justify-end">
+    <div class="lg:hidden fixed z-50 top-0 left-0 right-0 h-12 bg-white flex items-center justify-between">
+        <div class="ml-2 max-w-44">
+            <img onclick="window.location.href='/'" class="h-full w-auto  object-cover" src="{{asset("storage/images/assets/brand.png")}}" >
+        </div>
 
         @auth
         @isset(Auth()->user()->image)
@@ -48,7 +51,7 @@
 <div class="mb-12"></div>
 
 {{-- mobile bottom navbar --}}
-<div class="fixed bottom-0 left-0 right-0 h-12 bg-white shadow-md flex items-center justify-center lg:hidden">
+<div class="fixed bottom-0 left-0 right-0 h-12 bg-white shadow-md flex items-center justify-center xl:hidden">
     <button class="mr-4" onclick="window.location.href='/'">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
