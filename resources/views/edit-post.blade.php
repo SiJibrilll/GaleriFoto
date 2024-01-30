@@ -1,22 +1,38 @@
 <x-layout>
-    <form action="/posts/update/{{$post->id}}" method="POST" enctype="multipart/form-data">
+    <div class="flex justify-center">
+        <h1 class="text-black text-xs underline font-normal font-['Poppins']">Edit post</h1>
+    </div>
+
+    <form id="myform" class="mt-12 mx-2" action="/posts/update/{{$post->id}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <input class="filepond" type="file" name='image[]' multiple credits='false'>
 
-        <h1>Title</h1>
-        <input type="text" name="title" value="{{null == old('title')? $post->title : old('title')}}">
-        <h1>Description</h1>
-        <input type="text" name="description" value="{{null == old('description')? $post->description : old('description')}}">
-        <h1>Tags</h1>
-        <input type="text" name="tags" value="{{null == old('tags')? $post->tags : old('tags')}}">
-        <button type="submit" class="">Submit</button>
+        <h1 class="text-black font-normal font-['Poppins'] mt-9">Title</h1>
+        <div class="flex">
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="title">{{null == old('title')? $post->title : old('title')}}</textarea>
+        </div>
+
+        <h1 class="text-black font-normal font-['Poppins'] mt-4">Description</h1>
+        <div class="flex">
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="description">{{null == old('description')? $post->description : old('description')}}</textarea>
+        </div>
+
+        <h1 class="text-black font-normal font-['Poppins'] mt-4">Tags</h1>
+        <div class="flex">
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="tags">{{null == old('tags')? $post->tags : old('tags')}}</textarea>
+        </div>
+
     </form>
 
-    <form action="/posts/delete/{{$post->id}}" method="POST">
-        @csrf
-        <button type="submit">Delete post</button>
-    </form>
+    <div class="flex justify-end mt-6 mx-2 items-center">
+        <form action="/posts/delete/{{$post->id}}" method="POST">
+            @csrf
+            <button type="submit" class="mr-4 w-24 h-9 bg-red-500 text-white text-xs rounded-3xl font-normal font-['Poppins']">Delete post</button>
+        </form>
+        <button type="submit" form="myform" class="w-24 h-9 bg-gray-800 text-white text-xs rounded-3xl font-normal font-['Poppins']">Click me!</button>
+    </div>
+
 
     <script>
         // Register the plugin

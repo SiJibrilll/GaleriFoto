@@ -24,7 +24,7 @@
             <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="tags"></textarea>
         </div>
 
-        <div class="flex justify-end mt-4">
+        <div class="flex justify-end mt-6">
             <button type="submit" class="w-24 h-9 bg-gray-800 text-white text-xs rounded-3xl font-normal font-['Poppins']">Submit</button>
         </div>
     </form>
