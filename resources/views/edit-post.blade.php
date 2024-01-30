@@ -33,9 +33,6 @@
         <button type="submit" form="myform" class="w-24 h-9 bg-gray-800 text-white text-xs rounded-3xl font-normal font-['Poppins']">Submit</button>
     </div>
 
-    {{-- {{dd($post->images->map(function ($image) {
-        return asset("storage/images/postImage/") . $image->image;
-    })->all())}} --}}
 
     <script>
         // Register the plugin
@@ -51,7 +48,6 @@
 
         FilePond.setOptions({
             server: {
-                load: '/',
                 process: '/tmp-image/create',
                 revert: '/tmp-image/delete',
                 headers: {
@@ -59,15 +55,6 @@
                 },
                 allowMultiple: true,
             },
-            files: [
-                {
-                source:  'folder-65b84d3679fdd3.64021550/image-65b84d3679fd94.44546420',
-                options: {
-                    type: 'local',
-                    encodeFilename: false
-                    }
-                }
-            ],
         });
 
         let images = @json($post->images);
