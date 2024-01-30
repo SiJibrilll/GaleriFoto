@@ -16,7 +16,7 @@ class CreateAlbum extends Component
     public $newAlbum;
     public Post $post;
     public $albums;
-
+    // TODO we gotta rework the whole album system fr fr
 
     // -- save to new album
     function saveToNew() {

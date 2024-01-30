@@ -1,5 +1,4 @@
 <div class="p-4">
-    <h1>Save to Album </h1>
     <button onclick="showModal('create-album')">SAVE TO NEW ALBUM</button>
     <button wire:click='unsave'>unsave</button>
 

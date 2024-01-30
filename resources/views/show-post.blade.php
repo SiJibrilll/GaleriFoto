@@ -77,15 +77,15 @@
   <h1 class="ml-3 text-black text-xs font-normal font-['Poppins'] mb-4">More to Explore</h1>
 
   {{-- gray bg for modals --}}
-  <div class="modal-bg hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out"
+  <div class="modal-bg hidden fixed z-50 inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out"
     aria-hidden="true"></div>
 
   
 
   @auth {{-- Abum modal --}}
   <div
-    class="album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
-    <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
+    class="album-popup hidden z-50 fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
+    <div class="bg-white rounded-t-3xl shadow-md w-full">
       <button onclick="hideModal('album')">CLOSE ALBUM</button>
       <div class="panel h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
         <livewire:create-album :post='$post' />
@@ -99,7 +99,7 @@
   {{-- comment modal --}}
   <div
     class="comment-popup z-50 hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
-    <div class="bg-white rounded-s-3xl rounded-e-3xl shadow-md w-full pt-2">
+    <div class="bg-white rounded-t-3xl shadow-md w-full pt-2">
       <div onclick="hideModal('comment')" class="w-full h-4">
         <div  class="w-28 h-1 bg-gray-300 rounded-lg mx-auto cursor-pointer hover:bg-gray-400 transition-colors ease-in-out duration-150">
         </div>
