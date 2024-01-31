@@ -14,6 +14,7 @@ class AlbumController extends Controller
     function show(Album $album) {
 
         return view('show-album', [
+            'title' => $album->title,
             'album' => $album->id
         ]);
     }

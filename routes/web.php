@@ -71,9 +71,6 @@ Route::group(['middleware' => ['auth']], function () {
     // -- delete post
     Route::post('/posts/delete/{post}', [PostController::class, 'delete']);
 
-    // -- display album
-    Route::get('/albums', [AlbumController::class, 'index']);
-
     // -- display album contents
     Route::get('/albums/show/{album}', [AlbumController::class, 'show']);
 

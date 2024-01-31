@@ -2,9 +2,11 @@
 
 namespace App\Livewire;
 
-use App\Models\Album;
-use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Album;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,6 +16,7 @@ class DisplayPosts extends Component
     #[Reactive]
     public $filter;
     
+    public $user;
     public $tag;
     public $album;
 
@@ -44,7 +47,16 @@ class DisplayPosts extends Component
         }
 
         if (isset($this->album)){ // if there were an album id, then query accordingly
-            $newPosts = Album::find($this->album)->posts;
+            $album = Album::find($this->album);
+            if ($album->users->id != Auth()->user()->id) {
+                return redirect('/');
+            }
+
+            $newPosts = $album->posts;
+        }
+
+        if (isset($this->user)) {
+            $newPosts = User::find($this->user)->posts;
         }
 
 

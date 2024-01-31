@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     function show(User $user) {
-        return view('profile-page', [
+        return view('profile', [
             'user' => $user
         ]);
     }
