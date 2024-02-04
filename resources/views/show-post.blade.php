@@ -87,10 +87,22 @@
   <div
     class="album-popup hidden z-50 fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
     <div class="bg-white rounded-t-3xl shadow-md w-full pt-2">
-      <div onclick="hideModal('album')" class="w-full h-4">
-        <div  class="w-28 h-1 bg-gray-300 rounded-lg mx-auto cursor-pointer hover:bg-gray-400 transition-colors ease-in-out duration-150">
+      {{-- <div onclick="hideModal('album')" class="w-full h-4">
+        <div  class="w-28 h-1 bg-gray-300 rounded-lg mx-auto cursor-pointer transition-colors ease-in-out duration-150">
         </div>
-      </div>
+        <div class="flex justify-center">
+          <h1 class="text-black text-sm font-bold font-['Poppins']">Save to album</h1>
+
+        </div>
+      </div> --}}
+      <div  class="relative flex items-center justify-between px-4 py-2">
+        <button onclick="hideModal('album')" class="absolute top-1/2 left-4 -translate-y-1/2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <span class="text-center font-medium mx-auto">Save to album</span>
+      </div>     
       <div class="panel h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
         <livewire:create-album :post='$post' />
         <div class="h-[15vh] max-h-[15vh]">
@@ -104,9 +116,13 @@
   <div
     class="comment-popup z-50 hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
     <div class="bg-white rounded-t-3xl shadow-md w-full pt-2">
-      <div onclick="hideModal('comment')" class="w-full h-4">
-        <div  class="w-28 h-1 bg-gray-300 rounded-lg mx-auto cursor-pointer hover:bg-gray-400 transition-colors ease-in-out duration-150">
-        </div>
+      <div  class="relative flex items-center justify-between px-4 py-2">
+        <button onclick="hideModal('comment')" class="absolute top-1/2 left-4 -translate-y-1/2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <span class="text-center font-medium mx-auto">Comments</span>
       </div>
       <div class="h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
         <livewire:create-comments :id='$post->id' />
