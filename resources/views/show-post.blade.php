@@ -1,4 +1,5 @@
 <x-layout>
+  
   {{-- Show the image --}}
   @if (count($post->images) > 1) {{-- if theres more than one image, display show more button --}}
       <div class="relative">
@@ -85,8 +86,11 @@
   @auth {{-- Abum modal --}}
   <div
     class="album-popup hidden z-50 fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
-    <div class="bg-white rounded-t-3xl shadow-md w-full">
-      <button onclick="hideModal('album')">CLOSE ALBUM</button>
+    <div class="bg-white rounded-t-3xl shadow-md w-full pt-2">
+      <div onclick="hideModal('album')" class="w-full h-4">
+        <div  class="w-28 h-1 bg-gray-300 rounded-lg mx-auto cursor-pointer hover:bg-gray-400 transition-colors ease-in-out duration-150">
+        </div>
+      </div>
       <div class="panel h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
         <livewire:create-album :post='$post' />
         <div class="h-[15vh] max-h-[15vh]">
