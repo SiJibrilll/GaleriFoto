@@ -1,7 +1,7 @@
 <div>
+    
     <div class="mx-2 gap-2 columns-2 sm:columns-4">
         @for ($i = 0; $i < count($album); $i++) 
-
             {{-- this div is used to trigger the infinite scrolling --}}
             @if ($i + 7 == count($album))
                 <div x-intersect='$wire.loadMore'></div>
@@ -26,6 +26,7 @@
                 <h1 class="text-black ml-3 mt-1 text-sm font-black font-['Poppins']">{{$album[$i][2]}}</h1>
             </div>
         @endfor
+        
     </div>
     <script> // script to show the image once it loads
         function loaded($key) {

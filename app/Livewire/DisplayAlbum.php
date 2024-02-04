@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Album;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -20,7 +21,7 @@ class DisplayAlbum extends Component
     public function render()
     {
 
-        $newAlbums = Auth()->user()->albums;
+        $newAlbums = Album::where('user_id', Auth()->user()->id)->orderBy('created_at', 'desc')->offset($this->amount * $this->loads)->limit($this->amount)->get();
 
 
          // -- quarry all of the post's image
