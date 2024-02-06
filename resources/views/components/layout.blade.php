@@ -20,7 +20,7 @@
 <body>
     {{-- mobile topbar --}}
     @if (isset($title) == false)
-    <div class="lg:hidden fixed z-50 top-0 left-0 right-0 h-12 bg-white flex items-center justify-between">
+    <div class="lg:hidden fixed z-10 top-0 left-0 right-0 h-12 bg-white flex items-center justify-between">
         <div class="ml-2 max-w-44">
             <img src="{{asset("storage/images/assets/brand.png" )}}" class="h-full w-auto object-cover" onclick="window.location.href='/'">
         </div>

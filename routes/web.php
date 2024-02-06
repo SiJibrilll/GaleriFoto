@@ -9,6 +9,8 @@ use App\Http\Controllers\TmpImageController;
 use App\Http\Controllers\UserController;
 use App\Models\Album;
 
+// TODO we need to add notifications after user actions like commenting, saving, succesfull post, etc.
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

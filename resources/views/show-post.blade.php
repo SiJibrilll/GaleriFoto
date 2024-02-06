@@ -1,5 +1,4 @@
 <x-layout>
-  
   {{-- Show the image --}}
   @if (count($post->images) > 1) {{-- if theres more than one image, display show more button --}}
       <div class="relative">
@@ -42,7 +41,6 @@
 
       @auth
         <div class="ml-auto flex flex-row justify-end items-center">
-          {{-- // TODO this causes an error if user is not logged in --}}
             @if (Auth()->user()->id == $post->user->id) {{-- if logged in user is the post owner, then show edit button --}}
               <div class="bg-gray-200 rounded-3xl w-10 h-10 p-2">
                   <svg onclick="window.location.href='/posts/edit/{{$post->id}}'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -132,6 +130,8 @@
       </div>
     </div>
   </div>
+  <x-flash-message />
+
 
   {{-- display more post --}}
   <livewire:display-posts />

@@ -17,21 +17,6 @@ class CreateAlbum extends Component
     public $newAlbum;
     public Post $post;
     public $albums;
-    // TODO we gotta rework the whole album system fr fr
-    // code to show if a post has been saved by a user, could be used for styling buttons
-    // dd($post->albums->contains('user_id', Auth()->user()->id))
-
-    // TODO 1-feb-2024 : where getting somewhere, now we just gotta decide what to do on empty albums
-    // should we delete it here if the removed post was the last post for the album?
-    // or should we just keep an empty album with a place holder and let users delete it from the album menu instead?
-
-    // TODO 4 feb 2024 :
-    // finish the save to new album
-
-    // ACCOMPLISHMENTS :
-    // ive successfully made the save button able to save posts to album, and unsave the post if the post has already been saved there.
-    // unsave function could be depecrated soon due to achivement no-1
-    // save to album is done alongside it's style, hopefully no fuckups will happen
 
 
     // -- save to new album

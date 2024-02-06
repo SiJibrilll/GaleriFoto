@@ -7,7 +7,6 @@
 @else
     <a href="/login">Login</a>    
 @endauth --}}
-
 <div class="my-5 flex justify-center">
     <h1 class="text-black text-xs underline font-normal font-['Poppins']"> Home </h1>
 </div>

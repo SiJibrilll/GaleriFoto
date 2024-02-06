@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Tmp_image;
 use App\Models\Post_image;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -16,11 +17,7 @@ class PostController extends Controller
 
     // -- show all post
     function index() {
-        $posts = Post::all();
-
-        return view('home', [
-            'posts' => $posts
-        ]);
+        return view('home');
     }
 
     // -- show create form
@@ -75,7 +72,7 @@ class PostController extends Controller
             }
         }
 
-        return redirect('/posts/show/' . $post->id);
+        return redirect('/posts/show/' . $post->id)->with('message', 'Post created successfully!');
     }
 
     // -- show one post
