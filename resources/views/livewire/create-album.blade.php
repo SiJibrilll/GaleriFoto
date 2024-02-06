@@ -21,7 +21,6 @@
         </li>
         @endforeach
 
-
         {{-- if we have no albums yet --}}
         @if (false) 
             <script>
@@ -36,6 +35,7 @@
 
     @if ($saved)
         <script>
+          console.log('hello')
             resetModal();
         </script>
     @endif
