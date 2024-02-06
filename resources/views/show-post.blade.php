@@ -237,9 +237,6 @@
                 flash(event.message);
             });
           });
-        // document.addEventListener('closeModal', () => {console.log('ngentot')});
-
-        // document.dispatchEvent(new CustomEvent("closeModal"));
   </script>
 
 </x-layout>

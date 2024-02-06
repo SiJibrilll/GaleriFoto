@@ -43,7 +43,7 @@
         {{-- content here --}}
         <form action="/logout" method="POST">
             @csrf
-            <button type="submit" class="">Logout</button>
+            <button type="submit" class="mt-10 ml-3 text-red-600 text-lg font-bold font-['Poppins'] mb-3">Logout</button>
         <div class="h-[15vh] max-h-[15vh]">
         </div>
       </div>
