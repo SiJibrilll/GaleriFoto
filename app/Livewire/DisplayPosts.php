@@ -64,7 +64,7 @@ class DisplayPosts extends Component
        foreach ($newPosts as $post) {
         array_push($this->posts, [$post->id, $post->images[0]->image]);
        }
-
+       
 
         return view('livewire.display-posts', ['posts' => $this->posts]);
     }
