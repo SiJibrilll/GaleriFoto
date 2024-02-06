@@ -26,7 +26,7 @@ class DisplayAlbum extends Component
 
          // -- quarry all of the post's image
        foreach ($newAlbums as $album) {
-        array_push($this->albums, [$album->id, $album->posts[0]->images[0]->image, $album->title]);
+        array_push($this->albums, [$album->id, $album->posts[0]->images[0]->image ?? null, $album->title]);
        }
 
         return view('livewire.display-album', ['album' => $this->albums]);

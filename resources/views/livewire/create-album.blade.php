@@ -23,13 +23,6 @@
         
     </ul>
 
-
-    {{-- @if ($closed)
-        <script>
-            resetModal();
-        </script>
-    @endif --}}
-
     @if ($closed)
       @script
         <script>

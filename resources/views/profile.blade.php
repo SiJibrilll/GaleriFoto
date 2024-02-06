@@ -93,7 +93,7 @@
             }
         }
 
-        console.log(settingModal);
+        
         // ============ settings to preload ================
         settingModal.addEventListener('click', (event) => {
         // Prevent clicks inside the modal from closing it
