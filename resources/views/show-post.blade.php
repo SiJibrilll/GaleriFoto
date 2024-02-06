@@ -132,6 +132,15 @@
   </div>
   <x-flash-message />
 
+  {{-- flash msg for livewire --}}
+  <div id="flash-async" class="fixed bottom-11 left-0 w-full transition-all z-50 duration-300 transform translate-y-full ease-in-out opacity-0">
+    <div class="bg-black mx-5 text-white px-4 py-2 text-center rounded-xl font-bold bg-opacity-70">
+        <h1 id="msg" class="text-white text-sm font-['Poppins']">
+        </h1>
+
+      </div>
+  </div>
+
 
   {{-- display more post --}}
   <livewire:display-posts />
@@ -139,7 +148,26 @@
 
 
   {{-- scripts --}}
-  <script>
+  <script> // async flash msg script
+    const flashMessage = document.getElementById('flash-async');
+    const displayTime = 3000; // Adjust this to your desired display time in milliseconds
+
+    function flash(message) {
+        flashMessage.querySelector("h1#msg").textContent = message;
+        setTimeout(() => {
+          flashMessage.classList.remove('translate-y-full');
+          flashMessage.classList.remove('opacity-0');
+        }, 10);
+
+        setTimeout(() => {
+            flashMessage.classList.add('opacity-0'); // Slide down animation (after removing visible class)
+            flashMessage.classList.add('translate-y-full'); // Slide down animation (after removing visible class)
+        }, displayTime);
+    };
+  </script>
+
+
+  <script> // modal scripts
     const backdrop = document.querySelector('.modal-bg');
         const body = document.body;
         const commentModal = document.querySelector('.comment-popup');
