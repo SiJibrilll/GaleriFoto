@@ -12,10 +12,10 @@ class CreateAlbum extends Component
 {
 
     #[Locked]
+    public Post $post;
     public $saved = false;
 
     public $newAlbum;
-    public Post $post;
     public $albums;
 
 
@@ -35,7 +35,7 @@ class CreateAlbum extends Component
 
         // attach the post to the album
         $album->posts()->attach($this->post);
-        $this->saved = true;
+        $this->reset('newAlbum');
     }
 
 
