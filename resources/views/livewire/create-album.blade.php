@@ -1,5 +1,4 @@
 <div class="p-4">
-    {{-- // TODO there seems to be some fuck ups in the buttons, they didnt save correctly --}}
     {{-- List all album --}}
     <ul class="space-y-4">
         @foreach ($albums as $album)
@@ -20,25 +19,26 @@
             </div>
         </li>
         @endforeach
-
-
-        {{-- if we have no albums yet --}}
-        @if (false) 
-            <script>
-                let panel = document.querySelector('.album-popup');
-                panel.classList.add('max-h-[20vh]'); // decrease panel height
-            </script>            
-        @endif
         
         
     </ul>
 
 
-    @if ($saved)
+    {{-- @if ($closed)
         <script>
             resetModal();
         </script>
+    @endif --}}
+
+    @if ($closed)
+      @script
+        <script>
+            // Dispatch/Trigger/Fire the event
+            document.dispatchEvent(new CustomEvent("closeModal"));
+        </script>
+      @endscript
     @endif
+
 
     <div onclick="showModal('create-album')" class="fixed -bottom-1 inset-x-0 px-4 py-3  bg-white flex items-center flex-row max-h-[12vh]">
         <button class="bg-gray-200 rounded-full flex items-center justify-center w-14 h-14 my-4">

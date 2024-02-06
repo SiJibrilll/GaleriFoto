@@ -13,12 +13,14 @@ class CreateAlbum extends Component
 
     #[Locked]
     public Post $post;
-    public $saved = false;
+    public $closed = false;
 
     public $newAlbum;
     public $albums;
 
-
+    function test() {
+        $this->closed = false;
+    }
     // -- save to new album
     function saveToNew()
     {
@@ -33,9 +35,9 @@ class CreateAlbum extends Component
             'title' => $this->newAlbum
         ]);
 
-        // attach the post to the album
+    // attach the pos\ to the album
         $album->posts()->attach($this->post);
-        $this->reset('newAlbum');
+        $this->closed = true;
     }
 
 
@@ -51,14 +53,17 @@ class CreateAlbum extends Component
 
         // -- if the post is here, then detach the post from album instead
         if ($album->posts->contains($this->post->id)) {
+            $this->dispatch('closeModal', message: 'Removed from ' . $album->title);
             $album->posts()->detach($this->post->id);
 
         } else { // -- if it isnt, then attach
             //get users album where id matches, and attach
+            $this->dispatch('closeModal', message: 'Saved to '. $album->title);
             $album->posts()->attach($this->post->id);
         }
         
-        $this->saved = true;
+
+        $this->closed = true;
     }
 
 

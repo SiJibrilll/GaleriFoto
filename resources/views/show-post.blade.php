@@ -229,6 +229,17 @@
         // Prevent clicks inside the modal from closing it
         event.stopPropagation();
         });
+
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('closeModal', (event) => {
+                //
+                resetModal();
+                flash(event.message);
+            });
+          });
+        // document.addEventListener('closeModal', () => {console.log('ngentot')});
+
+        // document.dispatchEvent(new CustomEvent("closeModal"));
   </script>
 
 </x-layout>
