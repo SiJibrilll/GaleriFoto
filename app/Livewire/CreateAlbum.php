@@ -11,6 +11,7 @@ use Livewire\Component;
 class CreateAlbum extends Component
 {
 
+    #[Locked]
     public $saved = false;
 
     public $newAlbum;
