@@ -77,7 +77,7 @@
   <h1 class="ml-3 text-black text-xs font-normal font-['Poppins'] mb-4">More to Explore</h1>
 
   {{-- gray bg for modals --}}
-  <div class="modal-bg hidden fixed z-50 inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out"
+  <div onclick="resetModal()" class="modal-bg hidden fixed z-50 inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out"
     aria-hidden="true"></div>
 
   
@@ -199,9 +199,9 @@
           }          
         }
 
-        function resetModal() { //TODO for some reason this wont work
-          console.log('hello');
-            for (let type of ['comment', 'album', 'create-album']) {
+        function resetModal() {
+          for (let type of ['comment', 'album', 'create-album']) {
+              console.log('hello');
               let modal = document.querySelector('.' + type + '-popup');
               body.classList.remove('overflow-hidden'); // Re-enable scrolling on the body
               backdrop.classList.add('opacity-0');
@@ -227,8 +227,6 @@
         // Prevent clicks inside the modal from closing it
         event.stopPropagation();
         });
-        // TODO this wont work somehow
-        backdrop.addEventListener('click', resetModal());
   </script>
 
 </x-layout>
