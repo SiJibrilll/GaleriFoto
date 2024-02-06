@@ -72,7 +72,7 @@ class PostController extends Controller
             }
         }
 
-        return redirect('/posts/show/' . $post->id)->with('message', 'Post created successfully!');
+        return redirect('/posts/show/' . $post->id)->with('message', 'Post created successfully');
     }
 
     // -- show one post
@@ -130,7 +130,7 @@ class PostController extends Controller
             $tmp->delete();
         }
 
-        return redirect('/posts/show/'. $post->id);
+        return redirect('/posts/show/'. $post->id)->with('message', 'Post edited successfully');
     }
 
     function delete(Post $post) {
@@ -146,7 +146,7 @@ class PostController extends Controller
 
         $post->delete();
         
-        return redirect('/');
+        return redirect('/')->with('message', 'Post deleted');
     
     }
 

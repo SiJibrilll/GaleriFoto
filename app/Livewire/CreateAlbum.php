@@ -37,7 +37,7 @@ class CreateAlbum extends Component
 
     // attach the pos\ to the album
         $album->posts()->attach($this->post);
-        $this->closed = true;
+        $this->dispatch('closeModal', message: 'Saved to '. $album->title);
     }
 
 
@@ -62,8 +62,6 @@ class CreateAlbum extends Component
             $album->posts()->attach($this->post->id);
         }
         
-
-        $this->closed = true;
     }
 
 

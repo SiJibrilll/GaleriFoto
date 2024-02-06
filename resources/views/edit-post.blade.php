@@ -30,7 +30,7 @@
             @csrf
             <button type="submit" class="mr-4 w-24 h-9 bg-red-500 text-white text-xs rounded-3xl font-normal font-['Poppins']">Delete post</button>
         </form>
-        <button type="submit" form="myform" class="w-24 h-9 bg-gray-800 text-white text-xs rounded-3xl font-normal font-['Poppins']">Submit</button>
+        <button type="submit" form="myform" class="w-24 h-9 bg-gray-800 text-white text-xs rounded-3xl font-normal font-['Poppins']">Update</button>
     </div>
 
 

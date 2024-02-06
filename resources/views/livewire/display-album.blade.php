@@ -34,8 +34,20 @@
                 <h1 class="text-black ml-3 mt-1 text-sm font-black font-['Poppins']">{{$album[$i][2]}}</h1>
             </div>
         @endfor
+
         
     </div>
+    @if (count($albums) < 1)
+
+        <div class="w-full h-full flex flex-col justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-28 h-auto text-gray-800 mt-14">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <h1 class=" text-gray-800 text-4xl font-black font-['Poppins'] mt-5">Start saving</h1>
+            <h1 class=" text-gray-600 text-xl font-normal font-['Poppins'] mt-5">Save beloved posts to your album</h1>
+        </div>
+                                 
+    @endif
     <script> // script to show the image once it loads
         function loaded($key) {
             let main = document.querySelector('.main-' + $key);           

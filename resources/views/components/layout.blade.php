@@ -87,6 +87,8 @@
     </div>
     @endif
 
+    <x-flash-message />
+    
     @livewireScripts
 </body>
 
