@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class AuthController extends Controller
 {
     function login() {
+        View::share('title', 'login');
         return view('login');
     }
 

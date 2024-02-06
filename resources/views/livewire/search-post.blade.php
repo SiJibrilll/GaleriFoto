@@ -24,7 +24,7 @@
         @endisset
     
         @else
-        <button class="rounded">Login</button>
+        <a href="/login" class="rounded-2xl mr-4 justify-center w-16 p-2 h-10 flex items-center text-black text-sm font-bold font-['Poppins']">Login</a>
         @endauth
         
     </div>
