@@ -7,21 +7,30 @@
     <form class="mt-12 mx-2"  action="/posts/store" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <input class="filepond" type="file" name='image[]' multiple credits='false'>
+        <input class="filepond" type="file" name='image[]' multiple credits='false' >
+
+        @error('image')
+            <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
+        @enderror
+
 
         <h1 class="text-black font-normal font-['Poppins'] mt-9">Title</h1>
         <div class="flex">
-            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="title"></textarea>
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" placeholder="Add a title" name="title"></textarea>
         </div>
 
-        <h1 class="text-black font-normal font-['Poppins'] mt-4">Description</h1>
+        @error('title')
+            <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
+        @enderror
+
+        <h1 class="text-black font-normal font-['Poppins'] mt-4" >Description</h1>
         <div class="flex">
-            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="description"></textarea>
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" placeholder="Add more details" name="description"></textarea>
         </div>
 
         <h1 class="text-black font-normal font-['Poppins'] mt-4">Tags</h1>
         <div class="flex">
-            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="tags"></textarea>
+            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="tags" placeholder="Seperate tags with spaces"></textarea>
         </div>
 
         <div class="flex justify-end mt-6 mb-28">

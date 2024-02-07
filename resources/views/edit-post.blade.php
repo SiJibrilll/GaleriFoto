@@ -8,19 +8,29 @@
 
         <input class="filepond" type="file" name='image[]' multiple credits='false'>
 
+        @error('image')
+            <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
+        @enderror
+
+
         <h1 class="text-black font-normal font-['Poppins'] mt-9">Title</h1>
         <div class="flex">
-            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="title">{{null == old('title')? $post->title : old('title')}}</textarea>
+            <textarea placeholder="Add a title" class="flex-grow w-full rounded-md border border-zinc-200" name="title">{{null == old('title')? $post->title : old('title')}}</textarea>
         </div>
+
+        @error('title')
+            <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
+        @enderror
+
 
         <h1 class="text-black font-normal font-['Poppins'] mt-4">Description</h1>
         <div class="flex">
-            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="description">{{null == old('description')? $post->description : old('description')}}</textarea>
+            <textarea placeholder="Add more details" class="flex-grow w-full rounded-md border border-zinc-200" name="description">{{null == old('description')? $post->description : old('description')}}</textarea>
         </div>
 
         <h1 class="text-black font-normal font-['Poppins'] mt-4">Tags</h1>
         <div class="flex">
-            <textarea class="flex-grow w-full rounded-md border border-zinc-200" name="tags">@if(old('tags') != null){{old('tags')}}@else @foreach ($post->tags as $tag){{$tag->name}}@endforeach @endif</textarea>
+            <textarea placeholder="Seperate tags with spaces" class="flex-grow w-full rounded-md border border-zinc-200" name="tags">@if(old('tags') != null){{old('tags')}}@else @foreach ($post->tags as $tag){{$tag->name}}@endforeach @endif</textarea>
         </div>
 
     </form>

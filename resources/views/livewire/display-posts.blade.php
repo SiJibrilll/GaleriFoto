@@ -1,6 +1,6 @@
 <div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}    
-        {{-- // TODO we need to find a way to decide how much collumns we need for each screens, bigger screens having more collumns  --}}
+        {{--    // TODO we need to find a way to decide how much collumns we need for each screens, bigger screens having more collumns  --}}
     <div class="mx-2 gap-2 columns-2 sm:columns-4">
         @for ($i = 0; $i < count($posts); $i++) 
 

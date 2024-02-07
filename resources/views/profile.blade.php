@@ -82,7 +82,7 @@
           }          
         }
 
-        function resetModal() { //TODO for some reason this wont work
+        function resetModal() { 
             for (let type of ['setting']) {
               let modal = document.querySelector('.' + type + '-popup');
               body.classList.remove('overflow-hidden'); // Re-enable scrolling on the body
@@ -101,7 +101,5 @@
         event.stopPropagation();
         });
     
-        // TODO this wont work somehow
-        backdrop.addEventListener('click', resetModal());
   </script>
 </x-layout>
