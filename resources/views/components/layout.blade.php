@@ -74,7 +74,7 @@
     @if (($title ?? null) != 'login')
 
     {{-- this div is used to give a gap so the content isnt covered by the navbar --}}
-    <div class="mb-12"></div>
+    <div class="mb-12 xl:hidden"></div>
 
     {{-- mobile bottom navbar --}}
     <div class="fixed -bottom-1 left-0 right-0 h-12 bg-white shadow-md flex items-center justify-center xl:hidden">
