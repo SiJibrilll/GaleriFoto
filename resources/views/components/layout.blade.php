@@ -21,14 +21,14 @@
     {{-- mobile topbar --}}
     @if (isset($title) == false)
     <div class=" fixed z-10 top-0 left-0 right-0 h-12 bg-white flex flex-row items-center justify-between xl:h-20">
-        <div class="ml-2 max-w-44 xl:max-w-52">
+        <div style="cursor: pointer;" class="ml-2 max-w-44 xl:max-w-52">
             <img src="{{asset("storage/images/assets/brand.png" )}}" class="h-full w-auto object-cover" onclick="window.location.href='/'">
         </div>
 
         <form action="/posts/search" method="POST" class="grow w-full mx-24 hidden xl:block">
             @csrf
             @method('GET')
-            <div class="flex items-center rounded-3xl border border-neutral-500 px-2 py-1 w-full hover:bg-slate-100">
+            <div class="flex items-center rounded-3xl border border-neutral-500 px-2 py-1 w-full hover:bg-slate-100 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-neutral-500 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
@@ -41,10 +41,10 @@
         <a href="/posts/create" class="hidden items-center justify-center rounded-3xl border bg-gray-800 hover:bg-black text-white h-10 text-sm px-2 py-1 w-full font-['Poppins'] font-bold grow-0 max-w-44 mr-6 xl:flex">Create post</a>
         @auth
             @isset(Auth()->user()->image)
-                <img referrerpolicy="no-referrer" onclick="window.location.href='/users/show/{{Auth()->user()->id}}'"
-                    src="{{Auth()->user()->image}}" alt="User Icon" class="h-8 w-8 rounded-full mr-4 xl:w-10 xl:h-10">
+                <img style="cursor: pointer;" referrerpolicy="no-referrer" onclick="window.location.href='/users/show/{{Auth()->user()->id}}'"
+                    src="{{Auth()->user()->image}}" alt="User Icon" class="h-8 w-8 rounded-full mr-4 xl:w-10 xl:h-10 hover:brightness-90 transition-all">
             @else
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                     class="w-8 h-8 mr-4">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
