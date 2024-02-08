@@ -1,80 +1,82 @@
 <x-layout>
-  {{-- Show the image --}}
-  @if (count($post->images) > 1) {{-- if theres more than one image, display show more button --}}
-      <div class="relative">
-        <img class="w-full max-h-72 object-top object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
+  <div class="drop-shadow-md xl:mx-64">
+    {{-- Show the image --}}
+    @if (count($post->images) > 1) {{-- if theres more than one image, display show more button --}}
+        <div>
+          <img class="w-full max-h-72 object-top object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
+          alt="Image">
+          <button onclick="window.location.href='/posts/images/show/{{$post->id}}'" class="absolute bottom-1 left-0 right-0 mx-32 text-xs font-normal font-['Poppins'] bg-black px-4 py-2 text-white text-center rounded-2xl ">Show More</button>
+          <button onclick="window.history.back()" class="absolute top-0 left-0 m-4 bg-black bg-opacity-75 p-2 rounded-full text-white hover:bg-opacity-75 transition ease-in-out duration-150">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+        </div>
+    @else
+    <div class="relative flex justify-center max-h-screen">
+        <img class="max-w-auto h-auto object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
         alt="Image">
-        <button onclick="window.location.href='/posts/images/show/{{$post->id}}'" class="absolute bottom-1 left-0 right-0 mx-32 text-xs font-normal font-['Poppins'] bg-black px-4 py-2 text-white text-center rounded-2xl ">Show More</button>
         <button onclick="window.history.back()" class="absolute top-0 left-0 m-4 bg-black bg-opacity-75 p-2 rounded-full text-white hover:bg-opacity-75 transition ease-in-out duration-150">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
           </svg>
-        </button>
-      </div>
-  @else
-  <div class="relative">
-      <img class="max-w-auto h-auto object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
-      alt="Image">
-      <button onclick="window.history.back()" class="absolute top-0 left-0 m-4 bg-black bg-opacity-75 p-2 rounded-full text-white hover:bg-opacity-75 transition ease-in-out duration-150">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
-        </svg>
-      </button>    
+        </button>    
+    </div>
+    @endif
+
+    <div class="flex flex-row justify-between mx-3 mt-8 mb-5">
+      {{-- show poster username and picture --}}
+        @isset($post->user->image)
+            <div class="flex flex-row items-center">
+              <img onclick="window.location.href='/albums'" src="{{$post->user->image}}" alt="User Icon" class="h-8 w-8 rounded-full mr-4">
+              <h1 class="text-black text-xs font-semibold font-['Poppins']"> {{$post->user->username}} </h1>
+            </div>
+        @else   {{-- if poster does not have an image, just use a placeholder--}}
+            <div class="flex flex-row items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              </svg>
+              <h1 class="text-black text-xs font-semibold font-['Poppins']"> {{$post->user->username}} </h1>
+            </div>
+        @endisset
+
+        @auth
+          <div class="ml-auto flex flex-row justify-end items-center">
+              @if (Auth()->user()->id == $post->user->id) {{-- if logged in user is the post owner, then show edit button --}}
+                <div style="cursor: pointer;" class="bg-gray-200 rounded-3xl w-10 h-10 p-2">
+                    <svg onclick="window.location.href='/posts/edit/{{$post->id}}'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                    </svg>
+                </div>
+              @endif            
+
+            {{-- like button --}}
+            <livewire:create-like :post='$post' />
+            
+            <button class="rounded-3xl p-2 h-10 w-24 bg-gray-200 text-black text-xs font-normal font-['Poppins']" onclick="showModal('album')">Save</button>
+
+          </div>          
+        @endauth
+
+    </div>
+
+
+
+    {{-- general info about the post --}}
+    <div class="ml-16 mb-3">
+        <h1 class="text-black text-lg font-bold font-['Poppins']"> {{$post->title}} </h1>
+        <h1 class="text-black text-xs font-light font-['Poppins']"> {{$post->description}} </h1>
+    </div>
+
+    <hr class="h-[1px] bg-gray-200 w-full mb-3">
+    
+    {{-- comment button --}}
+    <button class="ml-3 text-black text-xs font-bold font-['Poppins'] mb-3" onclick="showModal('comment')">See Comments</button>
+    
+    <hr class="h-[1px] bg-gray-200 w-full mb-4">
+
   </div>
-  @endif
-
-  <div class="flex flex-row justify-between mx-3 mt-8 mb-5">
-    {{-- show poster username and picture --}}
-      @isset($post->user->image)
-          <div class="flex flex-row items-center">
-            <img onclick="window.location.href='/albums'" src="{{$post->user->image}}" alt="User Icon" class="h-8 w-8 rounded-full mr-4">
-            <h1 class="text-black text-xs font-semibold font-['Poppins']"> {{$post->user->username}} </h1>
-          </div>
-      @else   {{-- if poster does not have an image, just use a placeholder--}}
-          <div class="flex flex-row items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            </svg>
-            <h1 class="text-black text-xs font-semibold font-['Poppins']"> {{$post->user->username}} </h1>
-          </div>
-      @endisset
-
-      @auth
-        <div class="ml-auto flex flex-row justify-end items-center">
-            @if (Auth()->user()->id == $post->user->id) {{-- if logged in user is the post owner, then show edit button --}}
-              <div class="bg-gray-200 rounded-3xl w-10 h-10 p-2">
-                  <svg onclick="window.location.href='/posts/edit/{{$post->id}}'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
-                  </svg>
-              </div>
-            @endif            
-
-          {{-- like button --}}
-          <livewire:create-like :post='$post' />
-          
-          <button class="rounded-3xl p-2 h-10 w-24 bg-gray-200 text-black text-xs font-normal font-['Poppins']" onclick="showModal('album')">Save</button>
-
-        </div>          
-      @endauth
-
-  </div>
-
-
-
-  {{-- general info about the post --}}
-  <div class="ml-16 mb-3">
-      <h1 class="text-black text-lg font-bold font-['Poppins']"> {{$post->title}} </h1>
-      <h1 class="text-black text-xs font-light font-['Poppins']"> {{$post->description}} </h1>
-  </div>
-
-  <hr class="h-[1px] bg-gray-200 w-full mb-3">
-  
-  {{-- comment button --}}
-  <button class="ml-3 text-black text-xs font-bold font-['Poppins'] mb-3" onclick="showModal('comment')">See Comments</button>
-  
-  <hr class="h-[1px] bg-gray-200 w-full mb-4">
-
-  <h1 class="ml-3 text-black text-xs font-normal font-['Poppins'] mb-4">More to Explore</h1>
+  <h1 class="ml-3 text-black text-xs font-normal font-['Poppins'] mb-4 md:text-center md:mt-14 md:underline">More to Explore</h1>
 
   {{-- gray bg for modals --}}
   <div onclick="resetModal()" class="modal-bg hidden fixed z-50 inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out"
