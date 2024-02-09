@@ -155,8 +155,10 @@ class PostController extends Controller
         ]);
     }
 
-    function search() {
+    function search(Request $request) {
         View::share('title', 'search');
-        return view('search-page');
+        return view('search-page', [
+            'filter' => $request->filter
+        ]);
     }
 }

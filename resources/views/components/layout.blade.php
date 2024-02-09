@@ -33,7 +33,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
                   
-                <input name="search" type="text" placeholder="Search..." class="w-full focus:outline-none text-neutral-500 bg-transparent">
+                <input name="filter" type="text" placeholder="Search..." class="w-full focus:outline-none text-neutral-500 bg-transparent">
                 <input type="submit" style="display: none" />
             </div>
         </form>

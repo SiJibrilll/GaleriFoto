@@ -1,3 +1,3 @@
 <x-layout>
-    <livewire:search-post />
+    <livewire:search-post :$filter/>
 </x-layout>
