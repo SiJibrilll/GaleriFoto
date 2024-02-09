@@ -1,9 +1,9 @@
-<div class="p-4">
+<div class="relative p-4">
     {{-- List all album --}}
     <ul class="space-y-4">
         @foreach ($albums as $album)
         <li wire:key='{{$album->id}}'>
-            <div wire:click='saveToAlbum({{$album->id}})' class="flex flex-row items-center">
+            <div style="cursor: pointer;"  wire:click='saveToAlbum({{$album->id}})' class="flex flex-row items-center">
                 @isset($album->posts[0]->images[0]->image)
                 <img class="rounded-xl w-14 h-14 object-top object-cover" src="{{asset("storage/images/postImage/" . $album->posts[0]->images[0]->image)}}" />
                 @else
@@ -18,9 +18,7 @@
                 @endif         
             </div>
         </li>
-        @endforeach
-        
-        
+        @endforeach   
     </ul>
 
     @if ($closed)
@@ -33,7 +31,7 @@
     @endif
 
 
-    <div onclick="showModal('create-album')" class="fixed -bottom-1 inset-x-0 px-4 py-3  bg-white flex items-center flex-row max-h-[12vh]">
+    <div style="cursor: pointer;" onclick="showModal('create-album')" class="fixed -bottom-1 md:bottom-8 inset-x-0 px-4 py-3 bg-white flex items-center flex-row max-h-[12vh] md:rounded-b-3xl">
         <button class="bg-gray-200 rounded-full flex items-center justify-center w-14 h-14 my-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 font-black">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -44,7 +42,7 @@
 
   {{-- new album modal --}}
   <div class="create-album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
-    <div class="bg-white rounded-s-xl rounded-e-xl shadow-md w-full">
+    <div class="bg-white rounded-t-3xl md:rounded-3xl overflow-hidden  shadow-md w-full">
       <div  class="relative flex items-center justify-between px-4 py-2">
         <button onclick="hideModal('create-album', false)" class="absolute top-1/2 left-4 -translate-y-1/2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
@@ -58,11 +56,11 @@
           
           <img class="w-full max-h-72 object-top object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}" />
           <div class="flex px-4 py-3">
-            <textarea wire:model='newAlbum' class="flex-grow p-2 w-full rounded-md border border-zinc-200 items-center" placeholder="enter name"></textarea>
+            <textarea wire:model='newAlbum' class="flex-grow p-2 w-full rounded-md border border-zinc-200 items-center resize-none" placeholder="enter name"></textarea>
         </div>  
 
 
-          <div class="fixed bottom-0 inset-x-0 px-4 py-3 bg-white flex items-center justify-center flex-row max-h-[10vh]">
+          <div class="fixed bottom-0 inset-x-0 px-4 py-3 flex items-center justify-center flex-row max-h-[15vh]">
             <button class="rounded-xl p-2 h-10 w-full bg-gray-200 text-black text-xs font-normal font-['Poppins']" wire:click='saveToNew'>Save</button>
           </div>
       </div>

@@ -24,6 +24,8 @@ class CreateAlbum extends Component
     // -- save to new album
     function saveToNew()
     {
+
+        // TODO return error if title is null
         if (!Auth::check()) {
             return;
         }
