@@ -1,13 +1,16 @@
 <x-layout>
-    <div class="bg-repeat bg-left-top h-screen"
+    <div class="bg-repeat bg-cover md:bg-gray-600 md:bg-blend-overlay h-screen"
         style='background-image: url("{{asset("storage/images/assets/Img.png")}}")'>
 
+        <div>
+
+        </div>
 
         <div
-            class="z-50 fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform">
-            <div class="bg-gradient-to-t from-white from-90% w-full pt-2">
+            class="z-50 fixed bottom-0 inset-x-0 sm:inset-0 md:mx-32 xl:mx-96 md:bottom-20 md:top-10 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform">
+            <div class="bg-gradient-to-t from-white md:bg-white from-90% w-full pt-2 md:rounded-3xl">
                 <div
-                    class="bg-gray-200 p-4 rounded-full overflow-hidden  absolute top-0 left-1/2 transform translate-x-[-50%]">
+                    class="bg-gray-200 p-4 rounded-full overflow-hidden  absolute top-0 md:top-28 xl:top-0 left-1/2 transform translate-x-[-50%]">
                     <img onclick="window.location.href='/'" src="{{asset('storage/images/assets/logo.png')}}" alt=""
                         class="max-h-20 object-cover">
                 </div>
