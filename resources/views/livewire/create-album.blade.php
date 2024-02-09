@@ -40,6 +40,7 @@
           <h1 class="my-4 text-black text-sm font-bold font-['Poppins'] ml-3">New album</h1>
     </div>
 
+    {{-- // TODO this thing breaks on tablets, will fix in later builds  --}}
   {{-- new album modal --}}
   <div class="create-album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
     <div class="bg-white rounded-t-3xl md:rounded-3xl overflow-hidden  shadow-md w-full">

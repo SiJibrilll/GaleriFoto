@@ -107,7 +107,7 @@
 
   {{-- comment modal --}}
   <div
-    class="comment-popup z-50 hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
+    class="comment-popup z-50 hidden fixed bottom-0 md:bottom-20 md:top-20 xl:mx-96 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
     <div class="bg-white rounded-t-3xl shadow-md w-full pt-2">
       <div  class="relative flex items-center justify-between px-4 py-2">
         <button onclick="hideModal('comment')" class="absolute top-1/2 left-4 -translate-y-1/2">
@@ -117,7 +117,7 @@
         </button>
         <span class="text-center font-medium mx-auto">Comments</span>
       </div>
-      <div class="h-[75vh] max-h-[75vh] overflow-y-scroll scroll-smooth">
+      <div class="h-[75vh] max-h-[75vh] md:max-h-[50vh] overflow-y-scroll scroll-smooth ">
         <livewire:create-comments :id='$post->id' />
         <div class="h-[15vh] max-h-[15vh]">
         </div>
