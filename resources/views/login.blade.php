@@ -34,7 +34,7 @@
                                 class="flex justify-center items-center max-w-full rounded-3xl border bg-gray-100 p-2 mb-2 w-full mt-2">
                                 <img class="w-7"
                                     src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA">
-                                <p class="ml-4 text-sm text-black font-['Poppins']">Masuk dengan Google</p>
+                                <p class="ml-4 text-sm text-black font-['Poppins']">Login in with Google</p>
                             </a>
                         </form>
 
