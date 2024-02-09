@@ -18,7 +18,7 @@
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
 <body>
-    {{-- mobile topbar --}}
+    {{-- topbar --}}
     @if (isset($title) == false)
     <div class=" fixed z-10 top-0 left-0 right-0 h-12 bg-white flex flex-row items-center justify-between xl:h-20">
         <div style="cursor: pointer;" class="ml-2 max-w-44 xl:max-w-52">
