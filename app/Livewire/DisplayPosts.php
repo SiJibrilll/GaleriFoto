@@ -28,6 +28,12 @@ class DisplayPosts extends Component
     {
        $this->loads++;
     }
+
+    public function updateLayout($isSmallScreen)
+    {
+        // Update component data or logic based on the screen size flag
+        dd($isSmallScreen);
+    }
     
 
     public function render()

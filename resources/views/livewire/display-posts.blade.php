@@ -45,12 +45,13 @@
                   </svg>
                   
                   
-                <h1 class=" text-gray-600 text-xl font-normal font-['Poppins'] mt-5">No posts found</h1>
+                <h1 class="xl text-gray-600 text-xl font-normal font-['Poppins'] mt-5">No posts found</h1>
             </div>
 
             @endisset
                          
         @endif
+
     <script> // script to show the image once it loads
         function loaded($key) {
             let main = document.querySelector('.main-' + $key);           
@@ -58,5 +59,27 @@
             main.querySelector('img').classList.remove('hidden');
             main.querySelector('div').classList.add('hidden')
         }
+    </script>
+
+<script>
+    // func to get screen size
+    function getScreenSize() {
+        if (window.matchMedia('(min-width: 1280px)').matches) {
+            return 'desktop' // if its larger than 1280px, return desktop
+        }
+
+        if (window.matchMedia('(min-width: 768px)').matches) {
+            return 'tablet' // if its larger than 768px, return tablet
+        }
+
+        return 'mobile' // if nothing matches, then we are in portrait mobile screen
+
+    }
+    
+
+    window.addEventListener("resize", function() {
+        // Your function to handle screen size changes
+        @this.call('updateLayout', getScreenSize());
+    });
     </script>
 </div>
