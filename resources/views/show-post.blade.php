@@ -127,11 +127,11 @@
   <x-flash-message />
 
   {{-- flash msg for livewire --}}
-  <div id="flash-async" class="fixed bottom-11 left-0 w-full transition-all z-50 duration-300 transform translate-y-full ease-in-out opacity-0 hidden">
+  <div id="flash-async" class="fixed bottom-11 xl:bottom-1 left-0 w-full transition-all z-50 duration-300 transform translate-y-full ease-in-out opacity-0 hidden">
     <div class="bg-black mx-5 text-white px-4 py-2 text-center rounded-xl font-bold bg-opacity-70">
         <h1 id="msg" class="text-white text-sm font-['Poppins']">
+          test
         </h1>
-
       </div>
   </div>
 
