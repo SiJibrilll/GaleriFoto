@@ -25,8 +25,13 @@ class CreateAlbum extends Component
     function saveToNew()
     {
 
-        // TODO return error if title is null
-        if (!Auth::check()) {
+        if (!Auth::check()) { // if user is not logged in, return
+            return;
+        }
+
+
+        if (!isset($this->newAlbum)) { // if album title null, return
+            $this->dispatch('closeModal', message: 'Album title must be filled');
             return;
         }
 
