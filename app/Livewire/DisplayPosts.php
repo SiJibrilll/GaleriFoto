@@ -24,15 +24,33 @@ class DisplayPosts extends Component
     public $loads = 0;
     public $posts = [];
 
+    public $columns = [];
+    public $imagesInColumn;
+
     function loadMore()
     {
        $this->loads++;
     }
 
-    public function updateLayout($isSmallScreen)
+    public function updateLayout($column)
     {
         // Update component data or logic based on the screen size flag
-        dd($isSmallScreen);
+        $this->columns = [];
+        $columnOffset = 0;
+        $imagesInColumn = floor(count($this->posts) / $column);
+
+        for ($columnIndex = 0; $columnIndex < $column; $columnIndex++) {
+            $array = [];
+            for ($i = 0; $i < $imagesInColumn; $i++) {
+                if (isset($this->posts[$columnOffset])) {
+                    array_push($array, $this->posts[$columnOffset]);
+                }
+                $columnOffset += 1;
+            }
+
+            
+            array_push($this->columns, $array);
+        }
     }
     
 
