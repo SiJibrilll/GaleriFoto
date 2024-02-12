@@ -10,7 +10,7 @@
             @endif
 
             {{-- post cards --}}
-            <div class="mb-2 max-w-44 overflow-hidden rounded-2xl main-{{$posts[$i][0]}}" onclick="window.location.href = '/posts/show/{{$posts[$i][0]}}';">
+            <div class="mb-2 max-w-44 md:max-w-full overflow-hidden rounded-2xl main-{{$posts[$i][0]}}" onclick="window.location.href = '/posts/show/{{$posts[$i][0]}}';">
                 {{-- post thumbnail --}}
                 <img class="hidden relative  object-cover brightness-95" src="{{asset("storage/images/postImage/" . $posts[$i][1])}}" alt="Image" onload="loaded({{$posts[$i][0]}})">
                 
