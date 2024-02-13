@@ -81,5 +81,9 @@
         // Your function to handle screen size changes
         @this.call('updateLayout', getScreenSize());
     });
+    
+    setTimeout(() => {
+        @this.call('updateLayout', getScreenSize());        
+    }, 100);
     </script>    
 </div>
