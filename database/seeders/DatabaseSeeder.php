@@ -69,14 +69,14 @@ class DatabaseSeeder extends Seeder
             'post_id' => $post->id
         ]);
 
-        // $admin = \App\Models\User::factory()->create([
-        //     'username' => 'Admin',
-        //     'email' => 'admin@gmail.com',
-        //     'password' => '12345678',
-        // ]);
+        $admin = \App\Models\User::factory()->create([
+            'username' => 'ADMIN',
+            'email' => 'admin@gmail.com',
+            'password' => 'punyabibil'
+        ]);
 
-        // Role::create(['name' => 'admin']);
+        Role::create(['name' => 'admin']);
 
-        // $admin->assignRole('admin');        
+        $admin->assignRole('admin');        
     }
 }

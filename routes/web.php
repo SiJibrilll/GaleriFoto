@@ -33,7 +33,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
 
     // -- redirect this thing into login because we didnt have a login yet
-    Route::post('/authenticate', [AuthController::class, 'temporaryRedirect']);
+    Route::post('/authenticate', [AuthController::class, 'authenticate']);
 });
 
 

@@ -27,10 +27,6 @@ class GoogleController extends Controller
                     'google_id' => $googleUser->id,
                     'image' => $googleUser->getAvatar()
                 ]);
-                
-                // if ($user->wasRecentlyCreated) {
-                //     $user->assignRole('pelapor'); // give user a pelapor role
-                //   }
         
                 Auth::login($user, true); // login the user
             });

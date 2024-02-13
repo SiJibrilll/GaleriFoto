@@ -29,7 +29,7 @@ class AuthController extends Controller
 
     if (Auth::attempt($credentials)) {
         // Authentication passed...
-        return redirect()->intended('/beranda');
+        return redirect()->intended('/');
     } else {
         // Authentication failed...
         return back()->withErrors([
