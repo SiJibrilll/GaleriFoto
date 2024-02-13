@@ -4,7 +4,7 @@
             <div class="flex flex-col w-full items-center">
                 @foreach ($column as $postKey => $post)
                     {{-- post cards --}}
-                    <div class="mb-2 w-full max-w-44 xl:max-w-72 overflow-hidden rounded-2xl main-{{$post[0]}}" onclick="window.location.href = '/posts/show/{{$post[0]}}';">
+                    <div style="cursor: pointer;" class="hover:brightness-75 transition-all mb-2 w-full max-w-44 xl:max-w-72 overflow-hidden rounded-2xl main-{{$post[0]}}" onclick="window.location.href = '/posts/show/{{$post[0]}}';">
                         {{-- post thumbnail --}}
                         <img class="hidden relative  object-cover brightness-95" src="{{asset("storage/images/postImage/" . $post[1])}}" alt="Image" onload="loaded({{$post[0]}})">
                         
