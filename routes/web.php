@@ -10,14 +10,6 @@ use App\Http\Controllers\UserController;
 use App\Models\Album;
 
 
-/* TODO a couple of homeworks:
-
-    1. add the loadMore trigger to every colls in display posts, to ensure that every col edge will load new data ✅
-    2. do something with authentication, either redirect or whatever ✅
-    3. modals FUCKING BREAK on diffrent screen sizes, absolute positioning is wacky
-    4. we gotta find a way so our brand could be available across projects
-
-*/
 
 /*
 |--------------------------------------------------------------------------
