@@ -85,7 +85,7 @@ class PostController extends Controller
     // -- show edit form
     function edit(Post $post) {
         // if user doesnt own this post, return with error
-        if (Auth()->user()->id != $post->user->id) {
+        if (!Auth()->user()->hasRole('admin') && $post->user->id != Auth()->user()->id) {
             return redirect('/posts/show/' . $post->id);
         }
 
