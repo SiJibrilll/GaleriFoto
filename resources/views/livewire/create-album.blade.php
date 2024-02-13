@@ -55,7 +55,7 @@
       
       <div class="h-[75vh] max-h-[75vh]">
           
-          <img class="w-full max-h-72 object-top object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}" />
+          <img class="w-full max-h-72 object-top object-cover xl:max-w-md mx-auto" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}" />
           <div class="flex px-4 py-3">
             <textarea wire:keydown.enter="saveToNew" wire:model='newAlbum' class="flex-grow p-2 w-full rounded-md border border-zinc-200 items-center resize-none" placeholder="enter name"></textarea>
         </div>  

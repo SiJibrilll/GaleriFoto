@@ -2,8 +2,8 @@
   <div class="drop-shadow-md xl:mx-64">
     {{-- Show the image --}}
     @if (count($post->images) > 1) {{-- if theres more than one image, display show more button --}}
-        <div>
-          <img class="w-full max-h-72 object-top object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
+        <div class="relative flex justify-center h-full">
+          <img class="w-full max-h-72 object-top object-cover xl:max-w-xl xl:mx-auto xl:max-h-96" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
           alt="Image">
           <button onclick="window.location.href='/posts/images/show/{{$post->id}}'" class="absolute bottom-1 left-0 right-0 mx-32 text-xs font-normal font-['Poppins'] bg-black px-4 py-2 text-white text-center rounded-2xl ">Show More</button>
           <button onclick="window.history.back()" class="absolute top-0 left-0 m-4 bg-black bg-opacity-75 p-2 rounded-full text-white hover:bg-opacity-75 transition ease-in-out duration-150">
