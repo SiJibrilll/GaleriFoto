@@ -13,7 +13,7 @@
           </button>
         </div>
     @else
-    <div class="relative flex justify-center max-h-screen">
+    <div class="relative flex justify-center h-full">
         <img class="max-w-auto h-auto object-cover" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}"
         alt="Image">
         <button onclick="window.history.back()" class="absolute top-0 left-0 m-4 bg-black bg-opacity-75 p-2 rounded-full text-white hover:bg-opacity-75 transition ease-in-out duration-150">
