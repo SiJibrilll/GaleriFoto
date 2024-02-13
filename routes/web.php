@@ -30,6 +30,9 @@ Route::group(['middleware' => ['guest']], function () {
 
     // -- callback after SSO login or register
     Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
+
+    // -- redirect this thing into login because we didnt have a login yet
+    Route::post('/authenticate');
 });
 
 

@@ -5,19 +5,7 @@
 
             <img class="h-auto object-cover md: md:w-full mt-10" src="{{asset("storage/images/postImage/" . $image->image)}}"
                 alt="Image">
-{{--             
-                @if ($loop->first < 1)
-                <img class="max-w-auto h-auto object-cover md:max-w-max md:w-full" src="{{asset("storage/images/postImage/" . $image->image)}}"
-                alt="Image">
-                @continue
-                @endif
-                
-                
-                <div class="relative md:max-w-max md:w-full">
-                    <img class="max-w-auto h-auto object-cover md:max-w-max md:w-full" src="{{asset("storage/images/postImage/" . $image->image)}}"
-                    alt="Image">
-                     
-                </div> --}}
+
                 <div class=" fixed z-10 top-10 xl:top-20 left-0 right-0 h-12 flex flex-row items-center justify-between xl:h-20 md:mx-auto md:max-w-3xl">
                     <button onclick="window.history.back()" class="absolute top-0 left-0 m-4 bg-black bg-opacity-75 p-2 rounded-full text-white hover:bg-opacity-75 transition ease-in-out duration-150">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 md:w-10 md:h-10">
