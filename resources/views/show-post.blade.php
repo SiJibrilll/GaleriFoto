@@ -162,6 +162,7 @@
     };
   </script>
 
+
   <script> // modal scripts
     const backdrop = document.querySelector('.modal-bg');
         const body = document.body;
