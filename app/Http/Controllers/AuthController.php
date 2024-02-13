@@ -13,6 +13,10 @@ class AuthController extends Controller
         return view('login');
     }
 
+    function temporaryRedirect() {
+        return redirect('/login');
+    }
+
     public function authenticate(Request $request)
 {
     // Validate the form data

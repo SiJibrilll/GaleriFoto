@@ -18,8 +18,8 @@
                             <span class="sr-only">Loading...</span>
                         </div>
                     </div>
-
-                    @if ($colKey == count($columns) -1 && $loop->last)
+                    
+                    @if ($loop->last)
                         <div x-intersect='$wire.loadMore'></div>
                     @endif
                 @endforeach
