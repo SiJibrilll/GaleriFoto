@@ -24,21 +24,12 @@ class DisplayPosts extends Component
     public $loads = 0;
     public $posts = [];
 
-    function loadMore()
-    {
-       $this->loads++;
-    }
+    // -- properties for column display
+    public $columns = [];
 
-    public function updateLayout($isSmallScreen)
-    {
-        // Update component data or logic based on the screen size flag
-        // dd($isSmallScreen);
-    }
-    
-
-    public function render()
-    {
-       if ($this->filter == null && $this->tag == null) { // if there were no filters or tags applied, then show newest posts
+    // get post from database
+    protected function getPost() {
+        if ($this->filter == null && $this->tag == null) { // if there were no filters or tags applied, then show newest posts
             $newPosts =  Post::orderBy('created_at', 'desc')->offset($this->amount * $this->loads)->limit($this->amount)->get();
            
         } 
@@ -70,8 +61,33 @@ class DisplayPosts extends Component
        foreach ($newPosts as $post) {
         array_push($this->posts, [$post->id, $post->images[0]->image]);
        }
-       
+    }
 
+    // load more posts
+    function loadMore()
+    {
+       $this->loads++;
+
+       $this->getPost();
+    }
+
+    public function updateLayout($isSmallScreen)
+    {
+        
+    }
+
+    // to refresh the array of columns to fit diffrent screens
+    function createArrays() {
+        
+    }
+    
+    // run once on mount
+    function mount() {
+        $this->getPost();        
+    }
+
+    public function render()
+    {
         return view('livewire.display-posts', ['posts' => $this->posts]);
     }
 }
