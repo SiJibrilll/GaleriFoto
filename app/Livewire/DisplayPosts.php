@@ -26,6 +26,12 @@ class DisplayPosts extends Component
 
     // -- properties for column display
     public $columns = [];
+    public $column;
+    public $serve = true;
+
+    function endServe() {
+        $this->serve = false;
+    }
 
     // get post from database
     protected function getPost() {
@@ -69,25 +75,54 @@ class DisplayPosts extends Component
        $this->loads++;
 
        $this->getPost();
-    }
-
-    public function updateLayout($isSmallScreen)
-    {
-        
+       $this->servePostToColumn($this->column);
     }
 
     // to refresh the array of columns to fit diffrent screens
-    function createArrays() {
-        
+    protected function createColumns($newColumn) {
+        $this->reset('columns');
+        for ($i = 0; $i < $newColumn; $i++) {
+            array_push($this->columns, []);
+        }
     }
+
+    // this function will fit posts quarried from database to the columns
+    protected function servePostToColumn($column) {
+        $postIndex = 0;
+        $division = count($this->posts) / $column;
+        for ($colIndex = 0; $colIndex < $column; $colIndex++) {
+            for ($i = 0; $i < $division; $i++) {
+                if (isset($this->posts[0])) {
+                    array_push($this->columns[$colIndex], $this->posts[0]);
+                    array_shift($this->posts);
+                }
+            }
+        }
+        $this->reset('posts');
+    }
+
+    public function updateLayout($column)
+    {
+        $this->reset('loads');
+        $this->createColumns($column);
+        $this->getPost();
+        $this->servePostToColumn($column);
+        $this->column = $column;
+    }
+
+    
     
     // run once on mount
     function mount() {
-        $this->getPost();        
+        $defaultColumns = 2;
+        $this->getPost();
+        $this->createColumns($defaultColumns);
+        $this->servePostToColumn($defaultColumns);
+        $this->column = $defaultColumns;
     }
 
     public function render()
     {
-        return view('livewire.display-posts', ['posts' => $this->posts]);
+        return view('livewire.display-posts');
     }
 }
