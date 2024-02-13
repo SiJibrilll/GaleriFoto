@@ -44,8 +44,6 @@
   </div>
 
 
-  {{-- fixed -bottom-1 md:bottom-3 inset-x-0 --}}
-        {{-- // TODO this breaks on tablets, will fix on future builds --}}
     {{-- Comment Input Fields --}}
     <div class=" px-4 py-3 border-t bg-gray-50 flex items-center justify-between max-h-[15vh] md:rounded-b-3xl">
         <input wire:keydown.enter="store" wire:model='inputComment' type="text" class="w-full border rounded-3xl px-3 py-2 bg-gray-100 " placeholder="Write a comment...">

@@ -1,4 +1,6 @@
 <div class="relative p-4">
+
+  <div class="panel h-[75vh] max-h-[55vh] overflow-y-scroll scroll-smooth">
     {{-- List all album --}}
     <ul class="space-y-4">
         @foreach ($albums as $album)
@@ -21,6 +23,8 @@
         @endforeach   
     </ul>
 
+
+  </div>
     @if ($closed)
       @script
         <script>
@@ -31,7 +35,7 @@
     @endif
 
 
-    <div style="cursor: pointer;" onclick="showModal('create-album')" class="fixed -bottom-1 md:bottom-8 inset-x-0 px-4 py-3 bg-white flex items-center flex-row max-h-[12vh] md:rounded-b-3xl">
+    <div style="cursor: pointer;" onclick="showModal('create-album')" class="px-4 py-3 bg-white flex items-center flex-row max-h-[12vh] md:rounded-b-3xl">
         <button class="bg-gray-200 rounded-full flex items-center justify-center w-14 h-14 my-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 font-black">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -40,7 +44,6 @@
           <h1 class="my-4 text-black text-sm font-bold font-['Poppins'] ml-3">New album</h1>
     </div>
 
-    {{-- // TODO this thing breaks on tablets, will fix in later builds  --}}
   {{-- new album modal --}}
   <div class="create-album-popup hidden fixed bottom-0 inset-x-0 sm:inset-0 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform translate-y-full opacity-0">
     <div class="bg-white rounded-t-3xl md:rounded-3xl overflow-hidden  shadow-md w-full">
@@ -53,15 +56,15 @@
         <span class="text-center font-medium mx-auto">New album</span>
       </div>     
       
-      <div class="h-[75vh] max-h-[75vh]">
-          
-          <img class="w-full max-h-72 object-top object-cover xl:max-w-md mx-auto" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}" />
-          <div class="flex px-4 py-3">
-            <textarea wire:keydown.enter="saveToNew" wire:model='newAlbum' class="flex-grow p-2 w-full rounded-md border border-zinc-200 items-center resize-none" placeholder="enter name"></textarea>
-        </div>  
+      <div class="h-[75vh] max-h-[75vh] flex flex-col justify-between">
+          <div>
+            <img class="w-full max-h-72 object-top object-cover xl:max-w-md mx-auto" src="{{asset("storage/images/postImage/" . $post->images[0]->image)}}" />
+            <div class="flex px-4 py-3">
+              <textarea wire:keydown.enter="saveToNew" wire:model='newAlbum' class="flex-grow p-2 w-full rounded-md border border-zinc-200 items-center resize-none" placeholder="enter name"></textarea>
+          </div>  
+          </div>
 
-
-          <div class="fixed bottom-0 inset-x-0 px-4 py-3 flex items-center justify-center flex-row max-h-[15vh]">
+          <div class=" px-4 py-3 flex items-center justify-center flex-row max-h-[15vh]">
             <button class="rounded-xl p-2 h-10 w-full bg-gray-200 text-black text-xs font-normal font-['Poppins']" wire:click='saveToNew'>Save</button>
           </div>
       </div>

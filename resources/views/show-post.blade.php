@@ -95,12 +95,8 @@
           </svg>
         </button>
         <span class="text-center font-medium mx-auto">Save to album</span>
-      </div>     
-      <div class="panel h-[75vh] max-h-[55vh] md:max-h-[60vh] overflow-y-scroll scroll-smooth mb-[11vh]">
-        <livewire:create-album :post='$post' />
-        <div class="h-[15vh] max-h-[15vh]">
-        </div>
       </div>
+      <livewire:create-album :post='$post' />
     </div>
   </div>
   @endauth
