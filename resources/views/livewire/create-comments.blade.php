@@ -2,7 +2,7 @@
   <h1 class="text-black text-xs font-bold font-['Poppins'] mb-3">{{count($comments)}} Comments</h1>
   <hr class="h-[1px] bg-gray-200 w-full mb-3">
 
-  <div class="h-[75vh] max-h-[75vh] md:max-h-[50vh] overflow-y-scroll scroll-smooth ">
+  <div class="h-[50vh] max-h-[50vh] md:max-h-[50vh] overflow-y-scroll scroll-smooth ">
     {{-- List all comments --}}
     <ul class="space-y-4">
         @foreach ($comments as $comment)
@@ -45,7 +45,7 @@
 
 
     {{-- Comment Input Fields --}}
-    <div class=" px-4 py-3 border-t bg-gray-50 flex items-center justify-between max-h-[15vh] md:rounded-b-3xl">
+    <div class=" px-4 py-3 border-t flex items-center justify-between max-h-[15vh] md:rounded-b-3xl">
         <input wire:keydown.enter="store" wire:model='inputComment' type="text" class="w-full border rounded-3xl px-3 py-2 bg-gray-100 " placeholder="Write a comment...">
         <svg style="cursor: pointer;" wire:click="store" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-gray-200 ml-4">
           <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />

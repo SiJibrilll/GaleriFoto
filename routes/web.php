@@ -18,7 +18,7 @@ put the infinite scroll trigger abit higher so user would not feel the loading
 
 the display post on the user profile page seems to bug out, it displays duplicate posts
 
-the comment bar on my phone fills the whole screen, closing it is impossible
+the comment bar on my phone fills the whole screen, closing it is impossible ✅
 */
 
 /*
