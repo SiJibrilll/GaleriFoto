@@ -1,5 +1,5 @@
 @if (session()->has('message'))
-    <div id="flash-message" class="fixed bottom-11 left-0 w-full transition-all z-50 duration-300 transform translate-y-full ease-in-out opacity-0">
+    <div id="flash-message" class="fixed bottom-11 xl:bottom-1 left-0 w-full transition-all z-50 duration-300 transform translate-y-full ease-in-out opacity-0">
         <div class="bg-black mx-5 text-white px-4 py-2 text-center rounded-xl font-bold bg-opacity-70">
             <h1 class="text-white text-sm font-['Poppins']">
                 {{session('message')}}

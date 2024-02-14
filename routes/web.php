@@ -12,7 +12,7 @@ use App\Models\Album;
 /*
 TODO HOMERWORKS:
 
-the main layout pop up is still not responsive
+the main layout pop up is still not responsive ✅
 
 put the infinite scroll trigger abit higher so user would not feel the loading ✅
 
