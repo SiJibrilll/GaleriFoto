@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     
-                    @if ($loop->remaining < 3)
+                    @if ($loop->remaining < 3 && !$thatsAll)
                         <div x-intersect='$wire.loadMore'></div>
                     @endif
                 @endforeach
@@ -51,7 +51,7 @@
             @endisset
                    
         @else
-        <div class="w-full">
+        <div class="w-full" wire:loading>
             <img class="mx-auto" src="{{asset("storage/images/assets/loading.svg" )}}" alt="">
         </div>
         @endif

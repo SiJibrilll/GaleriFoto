@@ -23,6 +23,7 @@ class DisplayPosts extends Component
     public $amount = 10;
     public $loads = 0;
     public $posts = [];
+    public $thatsAll = false;
 
     // -- properties for column display
     public $columns = [];
@@ -37,7 +38,7 @@ class DisplayPosts extends Component
     protected function getPost() {
         if ($this->filter == null && $this->tag == null) { // if there were no filters or tags applied, then show newest posts
             $newPosts =  Post::orderBy('created_at', 'desc')->offset($this->amount * $this->loads)->limit($this->amount)->get();
-           
+
         } 
         
         if (isset($this->filter)){ // if there were filters, then query accordingly
@@ -53,17 +54,38 @@ class DisplayPosts extends Component
 
         if (isset($this->album)){ // if there were an album id, then query accordingly
             $album = Album::find($this->album);
+            $newPosts = [];
             if ($album->users->id != Auth()->user()->id) {
                 return redirect('/');
             }
 
-            $newPosts = $album->posts;
+            $offset = $this->amount * $this->loads;
+            for ($i = $offset; $i < $offset + $this->amount; $i++) {
+                if (isset($album->posts->all()[$i])) {
+                    array_push($newPosts, $album->posts->all()[$i]);
+                } else {
+                    $this->thatsAll = true;
+                }
+            }
         }
 
         if (isset($this->user)) {
-            $newPosts = User::find($this->user)->posts;
+            $posts = User::find($this->user)->posts->all();
+            $newPosts = [];
+
+            $offset = $this->amount * $this->loads;
+            for ($i = $offset; $i < $offset + $this->amount; $i++) {
+                if (isset($posts[$i])) {
+                    array_push($newPosts, $posts[$i]);
+                } else {
+                    $this->thatsAll = true;
+                }
+            }
         }
 
+        if (count($newPosts) < 1) {
+            $this->thatsAll = true;
+        }
 
        // -- quarry all of the post's image
        foreach ($newPosts as $post) {

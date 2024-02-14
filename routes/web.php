@@ -9,17 +9,7 @@ use App\Http\Controllers\TmpImageController;
 use App\Http\Controllers\UserController;
 use App\Models\Album;
 
-/*
-TODO HOMERWORKS:
 
-the main layout pop up is still not responsive ✅
-
-put the infinite scroll trigger abit higher so user would not feel the loading ✅
-
-the display post on the user profile page seems to bug out, it displays duplicate posts
-
-the comment bar on my phone fills the whole screen, closing it is impossible ✅
-*/
 
 /*
 |--------------------------------------------------------------------------
