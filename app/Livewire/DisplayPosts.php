@@ -49,6 +49,8 @@ class DisplayPosts extends Component
             $newPosts = Tag::where('name', $this->tag)->first()->posts;
         }
 
+        //TODO Problem diagnosed : there is no offseting on users and album so the system infinitely grabs all posts from them with no end.
+
         if (isset($this->album)){ // if there were an album id, then query accordingly
             $album = Album::find($this->album);
             if ($album->users->id != Auth()->user()->id) {

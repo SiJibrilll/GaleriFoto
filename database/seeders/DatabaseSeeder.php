@@ -46,8 +46,8 @@ class DatabaseSeeder extends Seeder
             }
             
             $chosenImage = $imageNames[array_rand($imageNames)];
-            $newPath = uniqid('folder-', true). '/'. uniqid('image-', true)  . pathinfo($chosenImage)['extension'];
-           
+            $newPath = uniqid('folder-', true). '/'. uniqid('image-', true)  . '.' . pathinfo($chosenImage)['extension'];
+
             Storage::copy('images/seeder/'. $chosenImage, 'public/images/postImage/' . $newPath);
             \App\Models\Post_image::factory()->create([
                 'image' => $newPath,

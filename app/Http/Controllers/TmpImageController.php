@@ -14,8 +14,9 @@ class TmpImageController extends Controller
         if (!$request->hasFile('image')) {
             return 'ERROR';
         }
+        
         $image = $request->file('image')[0];
-        $filename = uniqid('image-', true);
+        $filename = uniqid('image-', true) . '.' . $image->extension();
         $folder = uniqid('folder-', true);
         $image->storeAs('public/images/tmp/' . $folder, $filename);
 
