@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="x-icon" href="{{asset("storage/images/assets/logo.png" )}}">
     @vite('resources/css/app.css')
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
         rel="stylesheet" />
 
     @livewireStyles
-    <title>Galeri</title>
+    <title>Artcana</title>
 </head>
 <!-- add before </body> -->
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
