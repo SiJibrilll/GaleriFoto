@@ -23,7 +23,7 @@ class CreateComments extends Component
     }
 
     function store() {
-        if ($this->inputComment == '') {
+        if ($this->inputComment == '' || !Auth::check()) {
             return;
         }
 

@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     
-                    @if ($loop->remaining < 3 && !$thatsAll)
+                    @if ($loop->last && !$thatsAll)
                         <div x-intersect='$wire.loadMore'></div>
                     @endif
                 @endforeach
