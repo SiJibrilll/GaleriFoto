@@ -46,10 +46,17 @@
 
     {{-- Comment Input Fields --}}
     <div class=" px-4 py-3 border-t flex items-center justify-between max-h-[15vh] md:rounded-b-3xl">
-        <input wire:keydown.enter="store" wire:model='inputComment' type="text" class="w-full border rounded-3xl px-3 py-2 bg-gray-100 " placeholder="Write a comment...">
-        <svg style="cursor: pointer;" wire:click="store" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-gray-200 ml-4">
-          <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
-        </svg>
+        @auth
+          <input wire:keydown.enter="store" wire:model='inputComment' type="text" class="w-full border rounded-3xl px-3 py-2 bg-gray-100 " placeholder="Write a comment...">
+          <svg style="cursor: pointer;" wire:click="store" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-gray-200 ml-4">
+            <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
+          </svg>
+        @else
+          <div class="flex flex-row justify-center items-center">
+            <a href="/login" class="text-blue-600 text-xs font-black font-['Poppins'] mb-3 mr-1 underline">Login</a>
+            <h1 class="text-black text-xs font-bold font-['Poppins'] mb-3"> to add comments</h1>
+          </div>
+        @endauth
       </div>
 
       

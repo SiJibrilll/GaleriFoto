@@ -1,5 +1,5 @@
 <x-layout>
-  <div class="drop-shadow-md xl:mx-64">
+  <div class="xl:mx-64">
     {{-- Show the image --}}
     @if (count($post->images) > 1) {{-- if theres more than one image, display show more button --}}
         <div class="relative flex justify-center h-full">
