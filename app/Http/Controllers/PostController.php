@@ -50,9 +50,9 @@ class PostController extends Controller
             }
 
             $tmp = Tmp_image::find($image);
-            Storage::copy('public/images/tmp/' . $tmp->folder . '/' . $tmp->image, 'public/images/postImage/' . $tmp->folder . '/' . $tmp->image);
+            Storage::copy('public/images/tmp/' . $tmp->image, 'public/images/postImage/' . $tmp->image);
             Post_image::create([
-                'image' => $tmp->folder . '/' . $tmp->image,
+                'image' => $tmp->image,
                 'post_id' => $post->id
             ]);
             // -- hapus tmp image
