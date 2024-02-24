@@ -18,6 +18,7 @@ class TmpImageController extends Controller
         $image = $request->file('image')[0];
         $filename = uniqid('image-', true) . '.' . $image->extension();
         $folder = uniqid('folder-', true);
+        Storage::makeDirectory('public/images/tmp/' . $folder, 0755, true);
         $image->storeAs('public/images/tmp/' . $folder, $filename);
 
 
