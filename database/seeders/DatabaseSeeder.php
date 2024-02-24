@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             $imageNames[] = basename($image);
         }
 
-        foreach(range(1, 40) as $index) {
+        foreach(range(1, 700) as $index) {
             $post = \App\Models\Post::factory()->create([
                 'title' => 'test post',
                 'description' => 'lorem ipsum',
