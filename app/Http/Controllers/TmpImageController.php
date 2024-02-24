@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 class TmpImageController extends Controller
 {
+    // TODO we need to remake our whole post image uploading worflow so that we dont need to have folders for each images anymore
+
     function create(Request $request): string
     {
 
@@ -17,13 +19,10 @@ class TmpImageController extends Controller
         
         $image = $request->file('image')[0];
         $filename = uniqid('image-', true) . '.' . $image->extension();
-        $folder = uniqid('folder-', true);
-        Storage::makeDirectory('public/images/tmp/' . $folder, 0755, true);
-        $image->storeAs('public/images/tmp/' . $folder, $filename);
+        $image->storeAs('public/images/tmp/', $filename);
 
 
         $tmp = Tmp_image::create([
-            'folder' => $folder,
             'image' => $filename
         ]);
 
@@ -34,7 +33,8 @@ class TmpImageController extends Controller
     {
         $tmpImage = Tmp_image::where('image', request()->getContent())->first();
         if ($tmpImage) {
-            Storage::deleteDirectory('public/images/tmp/' . $tmpImage->folder);
+            Storage::delete('public/images/tmp/' . $tmpImage->image);
+            // Storage::deleteDirectory('public/images/tmp/' . $tmpImage->folder);
             $tmpImage->delete();
         }
 
