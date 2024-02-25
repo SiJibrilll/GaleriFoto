@@ -41,7 +41,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>              
           </button>
-          <h1 class="my-4 text-black text-sm font-bold font-['Poppins'] ml-3">New album</h1>
+          <button class="my-4 text-black text-sm font-bold font-['Poppins'] ml-3">New album</button>
     </div>
 
   {{-- new album modal --}}
