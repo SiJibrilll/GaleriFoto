@@ -112,8 +112,8 @@ class DisplayPosts extends Component
 
     // this function will fit posts quarried from database to the columns
     protected function servePostToColumn($column) {
-
-           $division = count($this->posts) / $column;
+        $postIndex = 0;
+        $division = count($this->posts) / $column;
         for ($colIndex = 0; $colIndex < $column; $colIndex++) {
             for ($i = 0; $i < $division; $i++) {
                 if (isset($this->posts[0])) {
