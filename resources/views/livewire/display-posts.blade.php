@@ -4,9 +4,9 @@
             <div wire:key='{{$colKey}}' class="flex flex-col w-full items-center">
                 @foreach ($column as $postKey => $post)
                     {{-- post cards --}}
-                    <div wire:key='{{$postKey}}' style="cursor: pointer;" class="hover:brightness-75 transition-all mb-2 w-full max-w-44 xl:max-w-72 overflow-hidden rounded-2xl main-{{$post[0]}}" onclick="window.location.href = '/posts/show/{{$post[0]}}';">
+                    <div wire:key='{{$postKey}}' x-init='init({{$post[0]}})' style="cursor: pointer;" class="hover:brightness-75 transition-all mb-2 w-full max-w-44 xl:max-w-72 overflow-hidden rounded-2xl main-{{$post[0]}}" onclick="window.location.href = '/posts/show/{{$post[0]}}';">
                         {{-- post thumbnail --}}
-                        <img class="hidden relative  object-cover brightness-95" src="{{asset("storage/images/postImage/" . $post[1])}}" alt="Image" onload="loaded({{$post[0]}})">
+                        <img class="relative hidden object-cover brightness-95" src="{{asset("storage/images/postImage/" . $post[1])}}" alt="Image" onload="loaded({{$post[0]}})">
                         
                         {{-- placeholder skeleton loader --}}
                         <div id="loader" class="relative space-y-8 animate-pulse w-full rtl:space-x-reverse">
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     
-                    @if ($loop->last && !$thatsAll)
+                    @if ($loop->remaining < 3 && $loop->parent->last && !$thatsAll)
                         <div x-intersect='$wire.loadMore'></div>
                     @endif
                 @endforeach
@@ -57,11 +57,33 @@
         @endif
 
     <script> // script to show the image once it loads
+        let loadedImage = {};
+
+        function isLoaded(key) {
+            return loadedImage[key] === true;
+        }
+
+        function init(key) {
+            console.log(isLoaded(key));
+        }
+
+        // function initialize(key) {
+        //     let main = document.querySelector('.main-' + key)
+        //     if (isLoaded(key)) {
+        //         main.querySelector('div').classList.add('hidden'); // if it already laods then just remove the loader skeleton
+        //     } else {
+        //         main.querySelector('img').classList.add('hidden'); // if it hasnt, add the skeleton loader first
+        //         main.querySelector('div').classList.remove('hidden'); // if it hasnt, add the skeleton loader first
+        //     }
+        // }
+
+
         function loaded($key) {
             let main = document.querySelector('.main-' + $key);           
 
             main.querySelector('img').classList.remove('hidden');
-            main.querySelector('div').classList.add('hidden')
+            main.querySelector('div').classList.add('hidden');
+            // loadedImage[$key] = true
         }
     </script>
 
