@@ -4,12 +4,13 @@
             <div wire:key='{{$colKey}}' class="flex flex-col w-full items-center">
                 @foreach ($column as $postKey => $post)
                     {{-- post cards --}}
-                    <div wire:key='{{$postKey}}' style="cursor: pointer;" class="hover:brightness-75 transition-all mb-2 w-full max-w-44 xl:max-w-72 overflow-hidden rounded-2xl main-{{$post[0]}}" onclick="window.location.href = '/posts/show/{{$post[0]}}';">
+                    <div wire:key='{{$postKey}}' x-init='init({{$post[0]}})' style="cursor: pointer;" class="relative hover:brightness-75 transition-all mb-2 w-full max-w-44 xl:max-w-72 overflow-hidden rounded-2xl main-{{$post[0]}}" onclick="window.location.href = '/posts/show/{{$post[0]}}';">
+
                         {{-- post thumbnail --}}
-                        <img class="hidden relative  object-cover brightness-95" src="{{asset("storage/images/postImage/" . $post[1])}}" alt="Image" onload="loaded({{$post[0]}})">
+                        <img class="object-cover brightness-95" src="{{asset("storage/images/postImage/" . $post[1])}}" alt="Image" x-on:load="loaded({{$post[0]}})">
                         
                         {{-- placeholder skeleton loader --}}
-                        <div id="loader" class="relative space-y-8 animate-pulse w-full rtl:space-x-reverse">
+                        <div id="loader" class="hidden space-y-8 animate-pulse w-full rtl:space-x-reverse">
                             <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded dark:bg-gray-700">
                                 <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                     <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
@@ -57,6 +58,13 @@
         @endif
 
     <script> // script to show the image once it loads
+        function init(key) {
+            let main = document.querySelector('.main-' + key);           
+
+            main.querySelector('img').classList.add('hidden');
+            main.querySelector('div').classList.remove('hidden')
+        }
+
         function loaded($key) {
             let main = document.querySelector('.main-' + $key);           
 
