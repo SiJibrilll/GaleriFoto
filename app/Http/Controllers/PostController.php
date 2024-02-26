@@ -35,7 +35,7 @@ class PostController extends Controller
             'image' => 'required',
         ]);
 
-    
+        
         $post = Post::create([
             'user_id' => Auth()->user()->id,
             'title' => $request->title,
@@ -56,8 +56,7 @@ class PostController extends Controller
                 'post_id' => $post->id
             ]);
             // -- hapus tmp image
-            Storage::deleteDirectory('public/images/tmp/' . $tmp->folder);
-            $tmp->delete();
+            Storage::deleteDirectory('public/images/tmp/' . $tmp->image);
         }
 
         
