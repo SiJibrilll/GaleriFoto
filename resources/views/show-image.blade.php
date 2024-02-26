@@ -3,6 +3,7 @@
         <div class="md:mx-auto md:max-w-3xl">
             @foreach ($post->images as $image)
 
+            {{-- // TODO the blacj bg doesnt wrap up fully when content is short --}}
             <img class="h-auto object-cover md: md:w-full mt-10" src="{{asset("storage/images/postImage/" . $image->image)}}"
                 alt="Image">
 
