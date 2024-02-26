@@ -150,6 +150,7 @@
         setTimeout(() => {
             flashMessage.classList.add('opacity-0'); // Slide down animation (after removing visible class)
             flashMessage.classList.add('translate-y-full'); // Slide down animation (after removing visible class)
+            flashMessage.classList.add('hidden'); // Slide down animation (after removing visible class)
         }, displayTime);
     };
   </script>
