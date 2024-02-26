@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tmp_image;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class TmpImageController extends Controller
 {
-    // TODO we need to remake our whole post image uploading worflow so that we dont need to have folders for each images anymore
 
     function create(Request $request): string
     {
-
+        // TODO validation only checks for files in the front end, it doesnt check it here in the back end. will fix later
         if (!$request->hasFile('image')) {
             return 'ERROR';
         }
