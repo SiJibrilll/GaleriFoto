@@ -28,9 +28,6 @@
           </svg>
         </button>
     </div>
-   
-  
-
 
     <div class="my-5 flex flex-col items-center justify-center w-full h-auto mt-16">
         @isset($user->image)
