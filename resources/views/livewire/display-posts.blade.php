@@ -73,6 +73,7 @@
         }
     </script>
 
+@script
 <script>
     // func to get screen size
     function getScreenSize() {
@@ -88,7 +89,6 @@
 
     }
     
-
     window.addEventListener("resize", function() {
         // Your function to handle screen size changes
         @this.call('updateLayout', getScreenSize());
@@ -97,5 +97,6 @@
     setTimeout(() => {
         @this.call('updateLayout', getScreenSize());        
     }, 100);
-    </script>    
+    </script>   
+@endscript 
 </div>
