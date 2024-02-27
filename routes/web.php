@@ -81,4 +81,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // -- profile page
     Route::get('/users/show/{user}', [UserController::class, 'show']);
+
+    // -- edit profile page
+    Route::get('/users/edit', [UserController::class, 'edit']);
 });
