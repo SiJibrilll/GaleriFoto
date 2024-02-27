@@ -68,6 +68,8 @@
             @csrf
             <button type="submit" class="mt-10 ml-3 text-red-600 text-lg font-bold font-['Poppins'] mb-3">Logout</button>
         </form>
+
+        <button onclick="window.location.href='/users/edit'" class="ml-3 text-lg font-bold font-['Poppins'] mb-3 cursor-pointer">Edit profile</button>
         <div class="h-[15vh] max-h-[15vh]">
         </div>
       </div>
