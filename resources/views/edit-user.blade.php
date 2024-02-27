@@ -4,7 +4,7 @@
     </div>
     
 
-    <form class="mt-12 mx-2"  action="/posts/store" method="POST" enctype="multipart/form-data">
+    <div class="mt-12 mx-2">
         @csrf
         <div class="flex flex-col md:flex-row xl:mx-52 md:gap-16">
 
@@ -13,17 +13,10 @@
             </div>
     
             <div class="flex flex-col w-full">
-                <h1 class="text-black font-normal font-['Poppins'] mt-9 md:mt-0">Title</h1>
-                <div class="flex">
-                    <textarea class="flex-grow w-full rounded-xl p-2 border border-zinc-200 resize-none" placeholder="Add a title" name="title"></textarea>
-                </div>
-        
-                @error('title')
-                    <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
-                @enderror
+                <livewire:edit-profile-livewire>
             </div>
         </div>    
-    </form>
+    </div>
 
       {{-- flash msg for livewire --}}
         <div id="flash-async" class="fixed bottom-11 xl:bottom-1 left-0 w-full transition-all z-50 duration-300 transform translate-y-full ease-in-out opacity-0 hidden">
@@ -38,6 +31,7 @@
     <script> // async flash msg script
         const flashMessage = document.getElementById('flash-async');
         const displayTime = 3000; // Adjust this to your desired display time in milliseconds
+        let timeout;
     
         function flash(message) {
             flashMessage.querySelector("h1#msg").textContent = message;
@@ -48,10 +42,14 @@
               flashMessage.classList.remove('opacity-0');
             }, 10);
     
-            setTimeout(() => {
+            clearTimeout(timeout);
+
+            timeout = setTimeout(() => {
                 flashMessage.classList.add('opacity-0'); // Slide down animation (after removing visible class)
                 flashMessage.classList.add('translate-y-full'); // Slide down animation (after removing visible class)
-                flashMessage.classList.add('hidden'); // Slide down animation (after removing visible class)
+                setTimeout(() => {
+                    flashMessage.classList.add('hidden'); // Slide down animation (after removing visible class)
+                }, 1000);
             }, displayTime);
         };
 
