@@ -18,7 +18,7 @@
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
-<body class="bg-repeat bg-cover md:bg-gray-600 md:bg-blend-overlay h-screen overflow-hidden" style='background-image: url("{{asset("storage/images/assets/Img.png")}}")'>
+<body class="bg-repeat bg-cover md:bg-gray-600 md:bg-blend-overlay h-screen overflow-hidden {{$title == 'register' ? 'bg-white bg-blend-overlay' : ''}}" style='background-image: url("{{asset("storage/images/assets/Img.png")}}")'>
     {{-- this div is used to give a gap so the content isnt covered by the navbar --}}
     {{-- {{dd($title)}} --}}
 

@@ -22,10 +22,13 @@ use App\Models\Album;
 |
 */
 // ============================== AUTHENTICATION ==================
+// -- register page
+Route::get('/register', [AuthController::class, 'register'])->name('login');
+
 Route::group(['middleware' => ['guest']], function () {
     // -- login page
     Route::get('/login', [AuthController::class, 'login'])->name('login');
-
+    
     // -- redirect to SSO login or register
     Route::get('/auth/google/redirect', [GoogleController::class, 'redirect']);
 

@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class EditProfileLivewire extends Component
 {
+    public $register;
 
     public $username;
 
@@ -20,6 +21,9 @@ class EditProfileLivewire extends Component
         $user->username = $this->username;
         $user->save();
 
+        if (isset($this->register)) {
+            return redirect('/')->with('message', 'Registered successfully');
+        }
         $this->dispatch('flash', message: 'Profile saved');
 
     }
