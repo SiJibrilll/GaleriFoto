@@ -149,6 +149,7 @@ class PostController extends Controller
     }
 
     function image(Post $post) {
+        View::share('page', 'image');
         return view('show-image', [
             'post' => $post
         ]);
