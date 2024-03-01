@@ -84,6 +84,9 @@ Route::group(['middleware' => ['auth']], function () {
     // -- display album contents
     Route::get('/albums/show/{album}', [AlbumController::class, 'show']);
 
+    // -- delete album
+    Route::post('/albums/delete/{album}', [AlbumController::class, 'delete']);
+
     // -- profile page
     Route::get('/users/show/{user}', [UserController::class, 'show']);
 
