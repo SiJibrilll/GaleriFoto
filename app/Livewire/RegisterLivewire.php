@@ -25,6 +25,7 @@ class RegisterLivewire extends Component
     }
 
     function register(){
+        $this->dispatch('register', message: 'Image uploaded');
         $validated = $this->validate([
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
@@ -43,6 +44,7 @@ class RegisterLivewire extends Component
 
     public function render()
     {
+
         return view('livewire.register-livewire');
     }
 }
