@@ -19,11 +19,10 @@ class GoogleController extends Controller
 
         try{ // lets try creating a user
             DB::transaction(function() use($googleUser) {
-                $user = User::updateOrCreate([
-                    'google_id' => $googleUser->id, // user with this google id exist? then simply return
+                $user = User::firstOrCreate([
+                    'email' => $googleUser->email, // user with this google id exist? then simply return
                 ], [
                     'username' => $googleUser->name, // else? create a new user
-                    'email' => $googleUser->email,
                     'google_id' => $googleUser->id,
                     'image' => $googleUser->getAvatar()
                 ]);

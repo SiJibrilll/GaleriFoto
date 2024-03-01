@@ -42,8 +42,8 @@
         <a href="/posts/create" class="hidden items-center justify-center rounded-3xl border bg-gray-800 hover:bg-black text-white h-10 text-sm px-2 py-1 w-full font-['Poppins'] font-bold grow-0 max-w-44 mr-6 xl:flex">Create post</a>
         @auth
             @isset(Auth()->user()->image)
-                <img style="cursor: pointer;" referrerpolicy="no-referrer" onclick="window.location.href='/users/show/{{Auth()->user()->id}}'"
-                    src="{{Auth()->user()->image}}" alt="User Icon" class="h-8 w-8 rounded-full mr-4 xl:w-10 xl:h-10 hover:brightness-90 transition-all">
+                <img id="nav-image" style="cursor: pointer;" referrerpolicy="no-referrer" onclick="window.location.href='/users/show/{{Auth()->user()->id}}'"
+                    src="{{Auth()->user()->image}}" alt="User Icon" class="w-8 h-8 min-w-8 max-h-8 rounded-full object-cover mr-4 xl:w-10 xl:h-10 xl:max-h-10 xl:min-w-10 hover:brightness-90 transition-all">
             @else
                 <svg onclick="window.location.href='/users/show/{{Auth()->user()->id}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                     class="w-8 h-8 mr-4 xl:w-20 xl:h-20">
