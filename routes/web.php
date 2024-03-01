@@ -22,10 +22,11 @@ use App\Models\Album;
 |
 */
 // ============================== AUTHENTICATION ==================
-// -- register page
-Route::get('/register', [AuthController::class, 'register'])->name('login');
 
 Route::group(['middleware' => ['guest']], function () {
+    // -- register page
+    Route::get('/register', [AuthController::class, 'register'])->name('login');
+
     // -- login page
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     
@@ -41,8 +42,6 @@ Route::group(['middleware' => ['guest']], function () {
 
 
 // ========================= General function =====================
-// -- logout
-Route::post('/logout', [AuthController::class, 'logout']);
 
 // -- home page
 Route::get('/', [PostController::class, 'index']);
@@ -58,6 +57,9 @@ Route::get('/posts/search', [PostController::class, 'search']);
 
 // ========================= logged in functions ===================
 Route::group(['middleware' => ['auth']], function () {
+    // -- logout
+    Route::post('/logout', [AuthController::class, 'logout']);
+
     // -- create form
     Route::get('/posts/create', [PostController::class, 'create']);
 
