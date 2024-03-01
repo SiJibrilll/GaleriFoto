@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="md:bg-gray-800 md:h-screen">
+<div class="md:bg-gray-800 md:h-screen">
         <div class="md:mx-auto md:max-w-3xl">
             @foreach ($post->images as $image)
 

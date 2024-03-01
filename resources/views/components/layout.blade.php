@@ -18,7 +18,7 @@
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
-<body>
+<body class="{{($page ?? null) == 'image' ? 'md:bg-gray-800' : ''}}">
     {{-- topbar --}}
     @if (isset($title) == false)
     <div class=" fixed z-10 top-0 left-0 right-0 h-12 bg-white flex flex-row items-center justify-between xl:h-20">
