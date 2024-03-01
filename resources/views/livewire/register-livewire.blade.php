@@ -1,6 +1,6 @@
 <div>
     @if ($step == 1)
-        <div wire:transition.enter.origin.right.duration.500ms wire:transition.out.origin.left class=" z-50 fixed h-full md:h-auto inset-x-0 sm:inset-0 md:mx-32 xl:mx-[34rem] md:bottom-20 md:top-10 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform">
+        <div class=" z-50 fixed h-full md:h-auto inset-x-0 sm:inset-0 md:mx-32 xl:mx-[34rem] md:bottom-20 md:top-10 sm:flex sm:items-center sm:justify-center transition-all duration-300 ease-in-out transform">
             <div class="bg-white h-full md:h-auto w-full pt-2 md:rounded-3xl">
                 <div class="flex flex-row justify-center items-center mt-28 md:mt-10">
                     <img onclick="window.location.href='/'" src="{{asset('storage/images/assets/logo.png')}}" alt="" class="max-h-10 object-cover">
@@ -82,6 +82,7 @@
             <script> // script for transistion
                 setTimeout(() => {
                     let detail = document.getElementById('detail');
+
                     setTimeout(() => {
                         detail.classList.remove('translate-x-5');
                         detail.classList.remove('opacity-0');
@@ -109,5 +110,24 @@
             </div>
         </div>        
     @endif
+
+
+    <script>
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('register', (event) => {
+                //
+                setTimeout(() => {
+                    let detail = document.getElementById('email');
+
+                    setTimeout(() => {
+                        detail.classList.remove('translate-x-5');
+                        detail.classList.remove('opacity-0');
+                        detail.classList.remove('scale-90');
+                    }, 1);
+                    
+                }, 1);
+            });
+          });
+    </script>
 
 </div>
