@@ -66,6 +66,9 @@
     <div class="ml-16 mb-3">
         <h1 class="text-black text-lg font-bold font-['Poppins']"> {{$post->title}} </h1>
         <h1 class="text-black text-xs font-light font-['Poppins']"> {{$post->description}} </h1>
+        @guest
+        <h1 class="text-black text-xs font-normal font-['Poppins'] mt-2">{{$post->likes()->count()}} Likes</h1>
+        @endguest
     </div>
 
     <hr class="h-[1px] bg-gray-200 w-full mb-3">
