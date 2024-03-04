@@ -38,6 +38,10 @@ class AuthController extends Controller
     }
 }
 
+    function register() {
+        View::share('title', 'register');
+        return view('register');
+    }
 
     public function logout(Request $request)
     {

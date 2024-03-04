@@ -1,5 +1,4 @@
 <div>
-    
     <div class="mx-2 gap-2 columns-2 sm:columns-{{count($album) >= 4? 4 : count($album)}} xl:mx-auto xl:max-w-2xl">
         @for ($i = 0; $i < count($album); $i++) 
             {{-- this div is used to trigger the infinite scrolling --}}
@@ -8,7 +7,7 @@
             @endif
 
             {{-- post cards --}}
-            <div class="flex flex-col break-inside-avoid mb-2">
+            <div class="flex flex-col break-inside-avoid mb-2 max-w-44 xl:max-w-60">
                 <div style="cursor: pointer;" class="max-w-44 xl:max-w-60 overflow-hidden rounded-2xl main-{{$album[$i][0]}}" onclick="window.location.href = '/albums/show/{{$album[$i][0]}}';">
                     @isset($album[$i][1])
                         {{-- post thumbnail --}}
@@ -31,7 +30,10 @@
                     </div>
                     @endisset
                 </div>
-                <h1 class="text-black ml-3 mt-1 text-sm font-black font-['Poppins']">{{$album[$i][2]}}</h1>
+                <div class="flex flex-row justify-between">
+                    <h1 class="text-black ml-3 mt-1 text-sm font-black font-['Poppins']">{{$album[$i][2]}}</h1>
+                </div>
+                 
             </div>
         @endfor
 

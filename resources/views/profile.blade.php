@@ -28,13 +28,10 @@
           </svg>
         </button>
     </div>
-   
-  
-
 
     <div class="my-5 flex flex-col items-center justify-center w-full h-auto mt-16">
         @isset($user->image)
-          <img referrerpolicy="no-referrer" class="w-full h-full max-w-32 rounded-full object-cover" src="{{$user->image}}">
+          <img referrerpolicy="no-referrer" class="w-32 h-32 max-w-32 max-h-32 min-w-32 rounded-full object-cover" src="{{$user->image}}">
         @else 
           <svg onclick="window.location.href='/users/show/{{Auth()->user()->id}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-full h-full max-w-32 rounded-full">
@@ -68,6 +65,8 @@
             @csrf
             <button type="submit" class="mt-10 ml-3 text-red-600 text-lg font-bold font-['Poppins'] mb-3">Logout</button>
         </form>
+
+        <button onclick="window.location.href='/users/edit'" class="ml-3 text-lg font-bold font-['Poppins'] mb-3 cursor-pointer">Edit profile</button>
         <div class="h-[15vh] max-h-[15vh]">
         </div>
       </div>

@@ -22,10 +22,14 @@ use App\Models\Album;
 |
 */
 // ============================== AUTHENTICATION ==================
+
 Route::group(['middleware' => ['guest']], function () {
+    // -- register page
+    Route::get('/register', [AuthController::class, 'register'])->name('login');
+
     // -- login page
     Route::get('/login', [AuthController::class, 'login'])->name('login');
-
+    
     // -- redirect to SSO login or register
     Route::get('/auth/google/redirect', [GoogleController::class, 'redirect']);
 
@@ -38,8 +42,6 @@ Route::group(['middleware' => ['guest']], function () {
 
 
 // ========================= General function =====================
-// -- logout
-Route::post('/logout', [AuthController::class, 'logout']);
 
 // -- home page
 Route::get('/', [PostController::class, 'index']);
@@ -55,6 +57,9 @@ Route::get('/posts/search', [PostController::class, 'search']);
 
 // ========================= logged in functions ===================
 Route::group(['middleware' => ['auth']], function () {
+    // -- logout
+    Route::post('/logout', [AuthController::class, 'logout']);
+
     // -- create form
     Route::get('/posts/create', [PostController::class, 'create']);
 
@@ -79,6 +84,12 @@ Route::group(['middleware' => ['auth']], function () {
     // -- display album contents
     Route::get('/albums/show/{album}', [AlbumController::class, 'show']);
 
+    // -- delete album
+    Route::post('/albums/delete/{album}', [AlbumController::class, 'delete']);
+
     // -- profile page
     Route::get('/users/show/{user}', [UserController::class, 'show']);
+
+    // -- edit profile page
+    Route::get('/users/edit', [UserController::class, 'edit']);
 });
