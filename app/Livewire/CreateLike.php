@@ -2,15 +2,21 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\Locked;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CreateLike extends Component
 {
-
+    #[Locked] 
     public $isLiked;
 
+    #[Locked] 
+    public $likes = 0;
+
+
+    #[Locked] 
     public Post $post;
 
     function like() {
@@ -31,8 +37,9 @@ class CreateLike extends Component
 
     public function render()
     {
-        $this->isLiked = Post::find($this->post->id)->likes->contains(Auth()->user()->id);
-        
+        $post = Post::find($this->post->id);
+        $this->isLiked = $post->likes->contains(Auth()->user()->id);
+        $this->likes = $post->likes()->count();
 
         return view('livewire.create-like');
     }

@@ -52,9 +52,13 @@
     </div>
 
 
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
     <script>
         // Register the plugin
-        FilePond.registerPlugin(FilePondPluginImagePreview);
+        FilePond.registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateType);
         
         // ... FilePond initialisation code here
         // Get a reference to the file input element
@@ -62,7 +66,15 @@
         
 
         // Create a FilePond instance
-        const pond = FilePond.create(inputElement);
+        const pond = FilePond.create(inputElement, {
+            acceptedFileTypes: ['image/*'],
+            fileValidateTypeDetectType: (source, type) =>
+                new Promise((resolve, reject) => {
+                    // Do custom type detection here and return with promise
+
+                    resolve(type);
+                }),
+        });
 
         FilePond.setOptions({
             server: {

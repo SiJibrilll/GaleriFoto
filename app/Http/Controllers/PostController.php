@@ -35,7 +35,7 @@ class PostController extends Controller
             'image' => 'required',
         ]);
 
-    
+        
         $post = Post::create([
             'user_id' => Auth()->user()->id,
             'title' => $request->title,
@@ -56,7 +56,7 @@ class PostController extends Controller
                 'post_id' => $post->id
             ]);
             // -- hapus tmp image
-            Storage::deleteDirectory('public/images/tmp/' . $tmp->folder);
+            Storage::deleteDirectory('public/images/tmp/' . $tmp->image);
             $tmp->delete();
         }
 
@@ -107,7 +107,7 @@ class PostController extends Controller
 
         // hapus semua gambar lama
         foreach ($post->images as $image) {
-            Storage::deleteDirectory('images/postImage/'. dirname($image->image));
+            Storage::deleteDirectory('public/images/postImages/' . $image->image);
             $image->delete();
         }
 
@@ -119,13 +119,13 @@ class PostController extends Controller
             }
 
             $tmp = Tmp_image::find($image);
-            Storage::copy('public/images/tmp/' . $tmp->folder . '/' . $tmp->image, 'public/images/postImage/' . $tmp->folder . '/' . $tmp->image);
+            Storage::copy('public/images/tmp/' . $tmp->image, 'public/images/postImage/' . $tmp->image);
             Post_image::create([
-                'image' => $tmp->folder . '/' . $tmp->image,
+                'image' => $tmp->image,
                 'post_id' => $post->id
             ]);
             // -- hapus tmp image
-            Storage::deleteDirectory('public/images/tmp/' . $tmp->folder);
+            Storage::deleteDirectory('public/images/tmp/' . $tmp->image);
             $tmp->delete();
         }
 
@@ -150,6 +150,7 @@ class PostController extends Controller
     }
 
     function image(Post $post) {
+        View::share('page', 'image');
         return view('show-image', [
             'post' => $post
         ]);

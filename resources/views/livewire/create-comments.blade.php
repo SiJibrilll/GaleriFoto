@@ -11,7 +11,7 @@
             {{-- show commenter pfp --}}
             @isset($comment->user->image)
                 <div class="flex flex-row items-center">
-                  <img onclick="window.location.href='/albums'" src="{{$comment->user->image}}" alt="User Icon" class="h-8 w-8 rounded-full mr-3 ml-1">
+                  <img src="{{$comment->user->image}}" alt="User Icon" class="h-8 w-8 rounded-full mr-3 ml-1">
                   <div class="flex flex-col">
                     <h1 class="text-black font-bold font-['Poppins']"> {{$comment->user->username}} </h1>
                     <p class="text-sm">{{$comment->comment}} </p>
